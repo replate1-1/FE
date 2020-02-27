@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Driver extends Component {
+class SignUpDriver extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class Driver extends Component {
     }
 }
 
-export default Driver;
+export default SignUpDriver;
