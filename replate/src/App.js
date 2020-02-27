@@ -16,7 +16,7 @@ function App() {
           <>
             <Link to='/SignUp'> Sign Up </Link>
             <br />
-            <Link to='/SignUp'> Login </Link>
+            <Link to='/Login'> Login </Link>
           </>
         )} />
         <Route path="/Login" component={Login} />
