@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Login from './components/Login';
-import Driver from './components/Driver';
-import PrivateRoute from './components/PrivateRoute';
-import SignUpDriver from './components/SignUpDriver';
-import SignUpBusiness from './components/SignUpBusiness';
+import Login from './components/Login/Login';
+import Driver from './components/Driver/Driver';
+import PrivateRoute from './utilities/PrivateRoute';
+import SignUpDriver from './components/SignUp/SignUpDriver';
+import SignUpBusiness from './components/SignUp/SignUpBusiness';
 import './App.css';
-import SignUp from './components/SignUp';
+import SignUp from './components/SignUp/SignUp';
 
 function App() {
   return (
