@@ -27,9 +27,9 @@ function App() {
 
   return (
     <Router>
-      <SessionContext value={{ logged, setLogged }}>
-        <BusinessContext value={{ business, setBusiness }}>
-          <DriverContext value={{ driver, setDriver }}>
+      <SessionContext.Provider value={{ logged, setLogged }}>
+        <BusinessContext.Provider value={{ business, setBusiness }}>
+          <DriverContext.Provider value={{ driver, setDriver }}>
             <div className="App">
               <Route exact path='/' render={props=> (
                 <>
@@ -44,9 +44,9 @@ function App() {
               <Route path='/SignUp/Business' component={SignUpBusiness} />
               <PrivateRoute path='/Driver' component={Driver} />
             </div>
-          </DriverContext>
-        </BusinessContext>
-      </SessionContext>
+          </DriverContext.Provider>
+        </BusinessContext.Provider>
+      </SessionContext.Provider>
     </Router>
   );
 }
