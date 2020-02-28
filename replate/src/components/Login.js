@@ -1,8 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from "yup";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Login = ({ touched, errors, status }) => {
     const [user, setUser] = useState({});
@@ -12,31 +13,47 @@ const Login = ({ touched, errors, status }) => {
     }, [status]);
 
     return (
-        <div className="login-form">
-            <Form>
-                <label>
-                    Name
-                    <Field type="text" name="name" />
-                    {errors.name && (
-                        <p className="formErrors">{errors.name}</p>
-                    )}
-                </label>
-                <label>
-                    Email
-                    <Field type="email" name="email" />
-                    {errors.email && (
-                        <p className="formErrors">{errors.email}</p>
-                    )}
-                </label>
-                <label>
-                    Name
-                    <Field type="password" name="password" />
-                    {errors.password && (
-                        <p className="formErrors">{errors.password}</p>
-                    )}
-                </label>
-                <button>Login</button>
-            </Form>
+        <div className="container">
+            <Header />
+            <h1>I'm enrolled or interested in....</h1>
+            <button>Food Pickup</button>
+            <button>Driving</button>
+            <button>Serving</button>
+            <div className="login-form">
+                <Form>
+                    <label>
+                        Name
+                        <Field type="text" name="name" />
+                        {errors.name && (
+                            <p className="formErrors">{errors.name}</p>
+                        )}
+                    </label>
+                    <label>
+                        Email
+                        <Field type="email" name="email" />
+                        {errors.email && (
+                            <p className="formErrors">{errors.email}</p>
+                        )}
+                    </label>
+                    <label>
+                        Name
+                        <Field type="password" name="password" />
+                        {errors.password && (
+                            <p className="formErrors">{errors.password}</p>
+                        )}
+                    </label>
+                    <button>Sign In</button>
+                    <label className="checbox-container">
+                        <Field type="checkbox" name="rememberMe" />
+                        Keep me Signed In
+                    </label>
+                </Form>
+            </div>
+            <div>
+                <h2>Don't have an email?</h2>
+                <p>Give us a call at 555-888-8888 and a representative will help you create an account</p>
+            </div>
+            <Footer />
         </div>
     )
 }
