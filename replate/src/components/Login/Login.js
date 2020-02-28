@@ -39,7 +39,7 @@ const Login = ({ touched, errors, status }) => {
             </Form>
         </div>
     )
-}
+};
 
 export default withFormik({
     mapPropsToValues: props => ({
@@ -53,7 +53,7 @@ export default withFormik({
             .required('A name is required'),
         email: yup
             .string()
-            .required('A vailed email address is required'),
+            .required('A valid email address is required'),
         password: yup
             .string()
             .min(6, 'Your password must be at least 6 characters')
