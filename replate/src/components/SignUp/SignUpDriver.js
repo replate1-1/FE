@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { TextInput, Label } from "evergreen-ui";
+import '../../css/SingUp.css';
 
 class SignUpDriver extends Component {
     state = {
@@ -76,67 +76,69 @@ class SignUpDriver extends Component {
 
     render() {
         return (
-            <form onSubmit={this.signUp}>
-                <Label htmlFor='username' > Username: </Label><br />
-                <TextInput
-                    type='text'
-                    name='username'
-                    id='username'
-                    value={this.state.credentials.username}
-                    onChange={this.handleChange}
-                    required
-                />
-                <Label htmlFor='password' > Password: </Label><br />
-                <TextInput
-                    type='password'
-                    name='password'
-                    id='password'
-                    value={this.state.credentials.password}
-                    onChange={this.handleChange}
-                    style={this.state.invalid.password ? this.style.Error : null}
-                    onBlur={this.passwordCheck}
-                    required
-                />
-                <Label htmlFor='passwordCheck' > Re-Enter Password: </Label><br />
-                <TextInput
-                    type='password'
-                    name='passwordCheck'
-                    id='passwordCheck'
-                    value={this.state.credentials.passwordCheck}
-                    onChange={this.handleChange}
-                    onBlur={this.passwordCheck}
-                    style={this.state.invalid.password ? this.style.Error : null}
-                    required
-                />
-                <Label htmlFor='email' > Email: </Label><br />
-                <TextInput
-                    type='email'
-                    name='email'
-                    id='email'
-                    value={this.state.credentials.email}
-                    onChange={this.handleChange}
-                    required
-                />
-                <Label htmlFor='volunteerName' > Volunteer Name: </Label><br />
-                <TextInput
-                    type='text'
-                    name='volunteerName'
-                    id='volunteerName'
-                    value={this.state.credentials.volunteerName}
-                    onChange={this.handleChange}
-                    required
-                />
-                <Label htmlFor='phoneNumber' > Phone Number: </Label><br />
-                <TextInput
-                    type='text'
-                    name='phoneNumber'
-                    id='phoneNumber'
-                    value={this.state.credentials.phoneNumber}
-                    onChange={this.handlePhoneNumber}
-                    required
-                /><br />
-                <TextInput type='submit' value='Sign Up' />
-            </form>
+            <div className='form'> 
+                <form onSubmit={this.signUp}>
+                    <label For='username' > Username: </label>
+                    <input
+                        type='text'
+                        name='username'
+                        id='username'
+                        value={this.state.credentials.username}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <label For='password' > Password: </label>
+                    <input
+                        type='password'
+                        name='password'
+                        id='password'
+                        value={this.state.credentials.password}
+                        onChange={this.handleChange}
+                        style={this.state.invalid.password ? this.style.Error : null}
+                        onBlur={this.passwordCheck}
+                        required
+                    />
+                    <label For='passwordCheck' > Re-Enter Password: </label>
+                    <input
+                        type='password'
+                        name='passwordCheck'
+                        id='passwordCheck'
+                        value={this.state.credentials.passwordCheck}
+                        onChange={this.handleChange}
+                        onBlur={this.passwordCheck}
+                        style={this.state.invalid.password ? this.style.Error : null}
+                        required
+                    />
+                    <label htmlFor='email' > Email: </label>
+                    <input
+                        type='email'
+                        name='email'
+                        id='email'
+                        value={this.state.credentials.email}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <label For='volunteerName' > Volunteer Name: </label>
+                    <input
+                        type='text'
+                        name='volunteerName'
+                        id='volunteerName'
+                        value={this.state.credentials.volunteerName}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <label For='phoneNumber' > Phone Number: </label>
+                    <input
+                        type='text'
+                        name='phoneNumber'
+                        id='phoneNumber'
+                        value={this.state.credentials.phoneNumber}
+                        onChange={this.handlePhoneNumber}
+                        required
+                    />
+                    <input type='submit' value='Sign Up' />
+                </form>
+            </div>
         );
     }
 }

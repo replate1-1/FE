@@ -1,14 +1,15 @@
 import React from 'react';
+import '../../css/Footer.css';
 
 export default function Footer() {
     return (
-        <ul>
-            <li>FAQ</li>
-            <li>Contact Us</li>
-            <li>Find a Service</li>
-            <li>Downloads</li>
-            <li>Donate</li>
-            <li>About</li>
-        </ul>
+        <div className='footer'>
+            <p>FAQ</p>
+            <p>Contact Us</p>
+            <p>Find a Service</p>
+            <p>Downloads</p>
+            <p>Donate</p>
+            <p>About</p>
+        </div>
     )
 }
