@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // IMPORT ASSETS
 import './css/App.css';
-
-
 import mainPhotoLeft from './imgs/MainPhotoLeft.png';
 import mainPhotoRight from './imgs/MainPhotoRight.png';
+import foodKitchen from './imgs/FoodKitchen.png';
+
 // IMPORT UTILITIES
 import PrivateRoute from './utilities/PrivateRoute';
 
@@ -43,16 +43,16 @@ function App() {
                       <img src={mainPhotoRight} />
                     </div>
                     <p> Many businesses have leftover food at the end of the day. </p>
-                    <p> We let them effortlessly have those extras picked up by a Replate volunteer and donate to one of our worthy partner organizations. </p>
-                    <div>
+                    <p className='cabin'> We let them effortlessly have those extras picked up by a Replate volunteer and donate to one of our worthy partner organizations. </p>
+                    <div className='time'>
                       <h1>Choose a time</h1>
                       <p> and a volunteer will show up and take those extras to a place of need. </p>
                     </div>
 
                     <h2>Get involved in...</h2>
-                    <div> 
-                      <img />
-                      <div>
+                    <div className='involved'> 
+                      <img src={foodKitchen} />
+                      <div className='list'>
                         <div> Food Pickup </div>
                         <div> Driving </div>
                         <div> Serving </div>

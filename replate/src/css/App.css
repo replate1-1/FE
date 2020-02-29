@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   font-family: Oleo Script Swash Caps;;
+  margin-bottom: 2vh;
 }
 
 .header > img {
@@ -25,7 +26,96 @@
 .main-body {
   display: flex;
   flex-wrap: wrap;
+  width: 98%;
+  margin: 0 auto;
 }
+
+.main-body > div:first-child {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.main-body > div:first-child > * {
+  width: 45%;
+}
+
+.main-body p{
+  font-family: Delius Swash Caps;
+  color: #466A66;
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+  margin: 1vh 0;
+}
+
+.main-body .cabin {
+  font-family: Cabin;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.time {
+  text-align: center;
+  background-color: #466A66;
+  color:white;
+  border-radius: 2px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.time > h1{
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.main-body h2 {
+  font-size: 32px;
+  line-height: 40px;
+  color: #466A66;
+  width: 100%;
+  text-align: center;
+  font-weight: 100;
+}
+
+.time > p {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.involved {
+  width: 100%;
+  margin-left: 2%;
+  display: flex;
+}
+
+.involved > img {
+  width: 70%;
+}
+
+.involved > .list{
+  margin-left: 2%;
+  width: 23%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.involved > .list > div {
+  text-align: center;
+  margin-bottom: 20px;
+  border: 5px solid #466A66;
+  width: 100%;
+  height: 50%;
+  line-height: 250%;
+  font-family: Cabin;
+  color: #466A66;
+}
+
 
 .App-logo {
   height: 40vmin;
