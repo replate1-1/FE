@@ -38,8 +38,8 @@ function App() {
                   <Link to='/Login'> Login </Link>
                 </>
               )} />
-              <Route path="/Login" component={Login} />
-              <Route path='/SignUp' component={SignUp} />
+              <Route exact path="/Login" component={Login} />
+              <Route exact path='/SignUp' component={SignUp} />
               <Route path='/SignUp/Driver' component={SignUpDriver} />
               <Route path='/SignUp/Business' component={SignUpBusiness} />
               <PrivateRoute path='/Driver' component={Driver} />

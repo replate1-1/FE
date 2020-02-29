@@ -1,10 +1,11 @@
 import { SessionContext } from "../../contexts/SessionContext";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from "yup";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Header.js";
+import Footer from '../Footer.js';
+
 const Login = ({ touched, errors, status }) => {
 
     const { logged, setLogged} = useContext(SessionContext);
