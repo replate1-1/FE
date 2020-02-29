@@ -151,7 +151,7 @@ class SignUpBusiness extends Component {
                 />
                 <Label htmlFor='phoneNumber' > Phone Number: </Label><br />
                 <TextInput
-                    type='text'
+                    type='number'
                     pattern= "/^[0-9\b]+$/"
                     name='phoneNumber'
                     id='phoneNumber'
