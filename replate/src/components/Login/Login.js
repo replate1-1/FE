@@ -12,7 +12,7 @@ const Login = ({ touched, errors, status }) => {
 
     const style = {
         Error: {
-            borderColor: 'red',
+            border: '1px solid red',
             color: 'red'
         }
     }
