@@ -26,7 +26,7 @@ class SignUpBusiness extends Component {
         Error: {
             borderColor: 'red'
         }
-    };
+    }
 
     handleChange = e =>{
         this.setState({
@@ -35,20 +35,21 @@ class SignUpBusiness extends Component {
                 [e.target.name]: e.target.value
             }
         })
-    };
+    }
 
     passwordCheck = () =>{
         this.setState({invalid: {
-            ...this.state.invalid,
+            ...this.state.invalid, 
             password: (this.state.credentials.passwordCheck !== this.state.credentials.password)
         }})
     }
 
     handlePhoneNumber = e =>{
         const re = /^[0-9\b]+$/;
-        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length < 9)){
+        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length <= 10)){
             this.setState({
                 credentials: {
+                    ...this.state.credentials,
                     phoneNumber: e.target.value
                 }
             });
@@ -57,16 +58,33 @@ class SignUpBusiness extends Component {
 
     signUp = e =>{
         e.preventDefault();
+        console.log({
+            username: this.state.credentials.username,
+            email:  this.state.credentials.email,
+            password: this.state.credentials.password,
+            businessName: this.state.credentials.businessName,
+            businessAddress: this.state.credentials.businessAddress,
+            phoneNumber: this.state.credentials.phoneNumber
+        })
         if(this.state.credentials.password !== this.state.credentials.passwordCheck){
             alert('password doesnt match');
-            // return;
+            return;
         } else {
-            axios.post('test', this.credentials)
+            axios.post('https://replate-bw.herokuapp.com/api/user/business',
+            {
+                username: this.state.credentials.username,
+                email:  this.state.credentials.email,
+                password: this.state.credentials.password,
+                businessName: this.state.credentials.businessName,
+                businessAddress: this.state.credentials.businessAddress,
+                phoneNumber: this.state.credentials.phoneNumber
+            }
+            )
                 .then(res =>{
+                    console.log(res);
                     this.props.history.push('/Login');
                 })
                 .catch(err => console.log(err));
-            this.props.history.push('/Login'); //shows that it'll take u to login after clicking submit while we wait for backend
         }
     };
 

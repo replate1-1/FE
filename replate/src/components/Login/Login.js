@@ -4,9 +4,6 @@ import { withFormik, Form, Field } from 'formik';
 import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
 
-import Header from "../Layout/Header";
-import Footer from "../Layout/Footer";
-
 const Login = ({ touched, errors, status }) => {
 
     const [user, setUser] = useState({});
@@ -17,7 +14,6 @@ const Login = ({ touched, errors, status }) => {
 
     return (
         <div className="container">
-            <Header />
             <h1>I'm enrolled or interested in....</h1>
             <Button>Food Pickup</Button>
             <Button>Driving</Button>
@@ -53,7 +49,6 @@ const Login = ({ touched, errors, status }) => {
                 <h2>Don't have an email?</h2>
                 <p>Give us a call at 555-888-8888 and a representative will help you create an account</p>
             </div>
-            <Footer />
         </div>
     )
 };
