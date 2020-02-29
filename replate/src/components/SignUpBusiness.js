@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class SignUpBusiness extends Component {
+
     state = {
         credentials : {
             username: '',
@@ -10,7 +11,16 @@ class SignUpBusiness extends Component {
             email: '',
             businessAddress: '',
             businessName: '',
-            phoneNumber: null,
+            phoneNumber: '',
+        },
+        invalid : {
+            password: false
+        }
+    }
+
+    style = {
+        Error: {
+            borderColor: 'red'
         }
     }
 
@@ -21,6 +31,24 @@ class SignUpBusiness extends Component {
                 [e.target.name]: e.target.value
             }
         })
+    }
+
+    passwordCheck = () =>{
+        this.setState({invalid: {
+            ...this.state.invalid, 
+            password: (this.state.credentials.passwordCheck != this.state.credentials.password)
+        }})
+    }
+
+    handlePhoneNumber = e =>{
+        const re = /^[0-9\b]+$/;
+        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length < 9)){
+            this.setState({
+                credentials: {
+                    phoneNumber: e.target.value
+                }
+            });
+        }
     }
 
     signUp = e =>{
@@ -49,6 +77,7 @@ class SignUpBusiness extends Component {
                     id='username'
                     value={this.state.credentials.username}
                     onChange={this.handleChange}
+                    required
                 />
                 <label for='password' > Password: </label> 
                 <input 
@@ -57,14 +86,20 @@ class SignUpBusiness extends Component {
                     id='password'
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
+                    onBlur={this.passwordCheck}
+                    style={this.state.invalid.password ? this.style.Error : null}
+                    required
                 />
-                <label for='password' > Re-Enter Password: </label> 
+                <label for='passwordCheck' > Re-Enter Password: </label> 
                 <input 
                     type='password'
                     name='passwordCheck'
                     id='passwordCheck'
                     value={this.state.credentials.passwordCheck}
                     onChange={this.handleChange}
+                    onBlur={this.passwordCheck}
+                    style={this.state.invalid.password ? this.style.Error : null}
+                    required
                 />
                 <label for='email' > Email: </label>  
                 <input 
@@ -73,30 +108,35 @@ class SignUpBusiness extends Component {
                     id='email'
                     value={this.state.credentials.email}
                     onChange={this.handleChange}
+                    required
                 />
-                <label for='businessName' > BusinessName: </label> 
+                <label for='businessName' > Business Name: </label> 
                 <input 
                     type='text'
                     name='businessName'
                     id='businessName'
                     value={this.state.credentials.businessName}
                     onChange={this.handleChange}
+                    required
                 />
-                <label for='businessAddress' > businessAddress: </label> 
+                <label for='businessAddress' > Business Address: </label> 
                 <input 
                     type='text'
                     name='businessAddress'
                     id='businessAddress'
                     value={this.state.credentials.businessAddress}
                     onChange={this.handleChange}
+                    required
                 />
                 <label for='phoneNumber' > Phone Number: </label>  
                 <input 
-                    type='number'
+                    type='text'
+                    pattern= "/^[0-9\b]+$/"
                     name='phoneNumber'
                     id='phoneNumber'
                     value={this.state.credentials.phoneNumber}
-                    onChange={this.handleChange}
+                    onChange={this.handlePhoneNumber}
+                    required
                 /><br />
                 <input type='submit' value='Sign Up' />
             </form>
