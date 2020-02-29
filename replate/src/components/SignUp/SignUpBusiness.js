@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// IMPORT CONTEXT
+import { BusinessContext } from "../../contexts/BusinessContext";
+
 class SignUpBusiness extends Component {
     state = {
         credentials : {
@@ -12,7 +15,7 @@ class SignUpBusiness extends Component {
             businessName: '',
             phoneNumber: null,
         }
-    }
+    };
 
     handleChange = e =>{
         this.setState({
@@ -21,28 +24,27 @@ class SignUpBusiness extends Component {
                 [e.target.name]: e.target.value
             }
         })
-    }
+    };
 
     signUp = e =>{
         e.preventDefault();
-        if(this.state.credentials.password != this.state.credentials.passwordCheck){
-            alert('password doesnt match')
-            return;
+        if(this.state.credentials.password !== this.state.credentials.passwordCheck){
+            alert('password doesnt match');
+            // return;
         } else {
             axios.post('test', this.credentials)
                 .then(res =>{
                     this.props.history.push('/Login');
                 })
                 .catch(err => console.log(err));
-            this.props.history.push('/Login'); //shows that itll take u to login after clicking submit while we wait for backend
+            this.props.history.push('/Login'); //shows that it'll take u to login after clicking submit while we wait for backend
         }
-    }
-
+    };
 
     render() {
         return (
             <form onSubmit={this.signUp}>
-                <label for='username' > Username: </label>
+                <label htmlFor='username' > Username: </label>
                 <input 
                     type='text'
                     name='username'
@@ -50,7 +52,7 @@ class SignUpBusiness extends Component {
                     value={this.state.credentials.username}
                     onChange={this.handleChange}
                 />
-                <label for='password' > Password: </label> 
+                <label htmlFor='password' > Password: </label>
                 <input 
                     type='password'
                     name='password'
@@ -58,7 +60,7 @@ class SignUpBusiness extends Component {
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
                 />
-                <label for='password' > Re-Enter Password: </label> 
+                <label htmlFor='password' > Re-Enter Password: </label>
                 <input 
                     type='password'
                     name='passwordCheck'
@@ -66,7 +68,7 @@ class SignUpBusiness extends Component {
                     value={this.state.credentials.passwordCheck}
                     onChange={this.handleChange}
                 />
-                <label for='email' > Email: </label>  
+                <label htmlFor='email' > Email: </label>
                 <input 
                     type='email'
                     name='email'
@@ -74,7 +76,7 @@ class SignUpBusiness extends Component {
                     value={this.state.credentials.email}
                     onChange={this.handleChange}
                 />
-                <label for='businessName' > BusinessName: </label> 
+                <label htmlFor='businessName' > BusinessName: </label>
                 <input 
                     type='text'
                     name='businessName'
@@ -82,7 +84,7 @@ class SignUpBusiness extends Component {
                     value={this.state.credentials.businessName}
                     onChange={this.handleChange}
                 />
-                <label for='businessAddress' > businessAddress: </label> 
+                <label htmlFor='businessAddress' > businessAddress: </label>
                 <input 
                     type='text'
                     name='businessAddress'
@@ -90,7 +92,7 @@ class SignUpBusiness extends Component {
                     value={this.state.credentials.businessAddress}
                     onChange={this.handleChange}
                 />
-                <label for='phoneNumber' > Phone Number: </label>  
+                <label htmlFor='phoneNumber' > Phone Number: </label>
                 <input 
                     type='number'
                     name='phoneNumber'

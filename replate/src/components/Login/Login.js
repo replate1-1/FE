@@ -2,11 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from "yup";
-import { SessionContext } from "../../contexts/SessionContext";
 
 const Login = ({ touched, errors, status }) => {
 
-    const { logged, setLogged} = useContext(SessionContext);
     const [user, setUser] = useState({});
 
     useEffect(() => {
