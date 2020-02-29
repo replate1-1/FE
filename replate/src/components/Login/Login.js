@@ -17,7 +17,6 @@ const Login = ({ touched, errors, status }) => {
 
     return (
         <div className="container">
-            <Header />
             <h1>I'm enrolled or interested in....</h1>
             <button>Food Pickup</button>
             <button>Driving</button>
