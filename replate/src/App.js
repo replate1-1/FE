@@ -59,9 +59,11 @@ function App() {
                       </div>
                     </div>
 
-                    <Link to='/SignUp'> Already a member? </Link>
-                    <Link to='/Login'> Login </Link>
-                    <Link to={'/'}> Status </Link>
+                    <p className='member'> Already a member? </p>
+                    <div className='buttons'>
+                      <Link className='login' to='/Login'>Login </Link>
+                      <Link className='login' to='/SignUp'> Sign Up </Link>
+                    </div>
                   </div>
                 )} />
                 <Route exact path="/Login" component={Login} />
