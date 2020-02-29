@@ -24,7 +24,6 @@ class SignUpDriver extends Component {
 
 
     handleChange = e =>{
-        console.log('hey');
         this.setState({
             credentials: {
                 ...this.state.credentials,
@@ -36,15 +35,16 @@ class SignUpDriver extends Component {
     passwordCheck = () =>{
         this.setState({invalid: {
             ...this.state.invalid, 
-            password: (this.state.credentials.passwordCheck != this.state.credentials.password)
+            password: (this.state.credentials.passwordCheck !== this.state.credentials.password)
         }})
     }
 
     handlePhoneNumber = e =>{
         const re = /^[0-9\b]+$/;
-        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length < 9)){
+        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length <= 10)){
             this.setState({
                 credentials: {
+                    ...this.state.credentials,
                     phoneNumber: e.target.value
                 }
             });
@@ -57,12 +57,19 @@ class SignUpDriver extends Component {
             alert('password doesnt match')
             return;
         } else {
-            axios.post('test', this.credentials)
+            axios.post('https://replate-bw.herokuapp.com/api/user/driver', 
+                {
+                    username: this.state.credentials.username,
+                    email:  this.state.credentials.email,
+                    password: this.state.credentials.password,
+                    volunteerName: this.state.credentials.volunteerName,
+                    phoneNumber: this.state.credentials.phoneNumber
+                })
                 .then(res =>{
+                    console.log(res);
                     this.props.history.push('/Login');
                 })
                 .catch(err => console.log(err));
-            this.props.history.push('/Login'); //shows that itll take u to login after clicking submit while we wait for backend
         }
     }
 
@@ -121,7 +128,6 @@ class SignUpDriver extends Component {
                 <label for='phoneNumber' > Phone Number: </label>  
                 <input 
                     type='text'
-                    pattern= "/^[0-9\b]+$/"
                     name='phoneNumber'
                     id='phoneNumber'
                     value={this.state.credentials.phoneNumber}

@@ -42,9 +42,10 @@ class SignUpBusiness extends Component {
 
     handlePhoneNumber = e =>{
         const re = /^[0-9\b]+$/;
-        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length < 9)){
+        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length <= 10)){
             this.setState({
                 credentials: {
+                    ...this.state.credentials,
                     phoneNumber: e.target.value
                 }
             });
@@ -53,16 +54,33 @@ class SignUpBusiness extends Component {
 
     signUp = e =>{
         e.preventDefault();
-        if(this.state.credentials.password != this.state.credentials.passwordCheck){
-            alert('password doesnt match')
+        console.log({
+            username: this.state.credentials.username,
+            email:  this.state.credentials.email,
+            password: this.state.credentials.password,
+            businessName: this.state.credentials.businessName,
+            businessAddress: this.state.credentials.businessAddress,
+            phoneNumber: this.state.credentials.phoneNumber
+        })
+        if(this.state.credentials.password !== this.state.credentials.passwordCheck){
+            alert('password doesnt match');
             return;
         } else {
-            axios.post('test', this.credentials)
+            axios.post('https://replate-bw.herokuapp.com/api/user/business', 
+            {
+                username: this.state.credentials.username,
+                email:  this.state.credentials.email,
+                password: this.state.credentials.password,
+                businessName: this.state.credentials.businessName,
+                businessAddress: this.state.credentials.businessAddress,
+                phoneNumber: this.state.credentials.phoneNumber
+            }
+            )
                 .then(res =>{
+                    console.log(res);
                     this.props.history.push('/Login');
                 })
                 .catch(err => console.log(err));
-            this.props.history.push('/Login'); //shows that itll take u to login after clicking submit while we wait for backend
         }
     }
 
@@ -131,7 +149,6 @@ class SignUpBusiness extends Component {
                 <label for='phoneNumber' > Phone Number: </label>  
                 <input 
                     type='text'
-                    pattern= "/^[0-9\b]+$/"
                     name='phoneNumber'
                     id='phoneNumber'
                     value={this.state.credentials.phoneNumber}
