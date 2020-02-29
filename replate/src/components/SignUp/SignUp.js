@@ -6,9 +6,9 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-                <Link to='/SignUpBusiness'> Business </Link>
+                <Link to='/SignUp/Business'> Business </Link>
                 <br />
-                <Link to='/SignUpDriver'> Driver </Link>
+                <Link to='/SignUp/Driver'> Driver </Link>
             </div>
         );
     }
