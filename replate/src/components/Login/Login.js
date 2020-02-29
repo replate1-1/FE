@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
+import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
 
 const Login = ({ touched, errors, status }) => {
@@ -14,28 +15,28 @@ const Login = ({ touched, errors, status }) => {
     return (
         <div className="login-form">
             <Form>
-                <label>
+                <Label htmlFor="name">
                     Name
-                    <Field type="text" name="name" />
+                    <TextInput type="text" name="name" />
                     {errors.name && (
                         <p className="formErrors">{errors.name}</p>
                     )}
-                </label>
-                <label>
+                </Label>
+                <Label htmlFor="email">
                     Email
-                    <Field type="email" name="email" />
+                    <TextInput type="email" name="email" />
                     {errors.email && (
                         <p className="formErrors">{errors.email}</p>
                     )}
-                </label>
-                <label>
-                    Name
-                    <Field type="password" name="password" />
+                </Label>
+                <Label htmlFor="password">
+                    Password
+                    <TextInput type="password" name="password" />
                     {errors.password && (
                         <p className="formErrors">{errors.password}</p>
                     )}
-                </label>
-                <button>Login</button>
+                </Label>
+                <Button>Login</Button>
             </Form>
         </div>
     )
