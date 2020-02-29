@@ -7,40 +7,59 @@ import Footer from "./Footer";
 
 const Login = ({ touched, errors, status }) => {
     const [user, setUser] = useState({});
+    // const [driver, setDriver] = useState({});
+    // const [business, setBusiness] = useState({});
+
+    const style = {
+        Error: {
+            borderColor: 'red',
+            color: 'red'
+        }
+    }
 
     useEffect(() => {
         status && setUser(status);
     }, [status]);
 
+    // useEffect(() => {
+    //     if({driver}) {
+    //         status && setDriver(status);
+    //     } else if({business}) {
+    //         status && setBusiness(status);
+    //     } else {
+    //         return null;
+    //     }
+    // }, [status]);
+
     return (
         <div className="container">
             <Header />
             <h1>I'm enrolled or interested in....</h1>
-            <button>Food Pickup</button>
+            <button >Food Pickup</button>
             <button>Driving</button>
             <button>Serving</button>
             <div className="login-form">
                 <Form>
                     <label>
                         Name
-                        <Field type="text" name="name" />
-                        {errors.name && (
-                            <p className="formErrors">{errors.name}</p>
-                        )}
+                        <Field type="text" name="name" style={errors.name ? style.Error : null} />
+                        {/* {errors.name && (
+                            <p style={errors.name ? style.Error : null}>{errors.name}</p>
+                        )} */}
                     </label>
                     <label>
                         Email
-                        <Field type="email" name="email" />
-                        {errors.email && (
-                            <p className="formErrors">{errors.email}</p>
-                        )}
+                        <Field type="email" name="email" style={errors.email ? style.Error : null} />
+                        {/* {errors.email && (
+                            <p style={errors.email ? style.Error : null}>{errors.email}</p>
+                        )} */}
                     </label>
                     <label>
                         Name
-                        <Field type="password" name="password" />
-                        {errors.password && (
-                            <p className="formErrors">{errors.password}</p>
-                        )}
+                        <Field type="password" name="password" style={errors.email ? style.Error : null} />
+                        {/* {errors.password && (
+                            <p style={errors.password ? style.Error : null}>{errors.password}</p>
+                        )} */}
                     </label>
                     <button>Sign In</button>
                     <label className="checbox-container">
@@ -76,10 +95,32 @@ export default withFormik({
             .min(6, 'Your password must be at least 6 characters')
             .required('A password is required')
     }),
+    // handleSubmit: (values, { resetForm, setDriver, setBusiness }) => {
+    //     console.log('values', values);
+    //     if({driver}) {
+    //         axios
+    //             .post('https://replate-bw.herokuapp.com/api/user/driver')
+    //             .then(response => {
+    //                 console.log('response', response);
+    //                 setDriver(response.data, values);
+    //                 resetForm();
+    //             })
+    //             .catch(error => console.log('error', error));
+    //     } else if({business}) {
+    //         axios
+    //             .post('https://replate-bw.herokuapp.com/api/user/business')
+    //             .then(response => {
+    //                 console.log('response', response);
+    //                 setBusiness(response.data, values);
+    //                 resetForm();
+    //             })
+    //             .catch(error => console.log('error', error));
+    //     }
+    // }
     handleSubmit: (values, { resetForm, setStatus }) => {
         console.log('values', values);
         axios
-            .post('')
+            .post('https://replate-bw.herokuapp.com/')
             .then(response => {
                 console.log('response', response);
                 setStatus(response.data, values);
