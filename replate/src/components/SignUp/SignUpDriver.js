@@ -19,7 +19,7 @@ class SignUpDriver extends Component {
 
     style = {
         Error: {
-            borderColor: 'red'
+            border: '1px solid red'
         }
     }
 

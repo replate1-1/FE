@@ -12,7 +12,7 @@ const Login = ({ touched, errors, status }) => {
 
     const style = {
         Error: {
-            borderColor: 'red',
+            border: '1px solid red',
             color: 'red'
         }
     }
@@ -34,37 +34,37 @@ const Login = ({ touched, errors, status }) => {
     return (
         <div className="container">
             <h1>I'm enrolled or interested in....</h1>
-            <button >Food Pickup</button>
-            <button>Driving</button>
-            <button>Serving</button>
+            <Button >Food Pickup</Button>
+            <Button>Driving</Button>
+            <Button>Serving</Button>
             <div className="login-form">
                 <Form>
-                    <label>
-                        Name
-                        <Field type="text" name="name" style={errors.name ? style.Error : null} />
+                    <Label>
+                        Name<br />
+                        <TextInput type="text" name="name" style={errors.name ? style.Error : null} />
                         {/* {errors.name && (
                             <p style={errors.name ? style.Error : null}>{errors.name}</p>
                         )} */}
-                    </label>
-                    <label>
-                        Email
-                        <Field type="email" name="email" style={errors.email ? style.Error : null} />
+                    </Label>
+                    <Label>
+                        Email<br />
+                        <TextInput type="email" name="email" style={errors.email ? style.Error : null} />
                         {/* {errors.email && (
                             <p style={errors.email ? style.Error : null}>{errors.email}</p>
                         )} */}
-                    </label>
-                    <label>
-                        Name
-                        <Field type="password" name="password" style={errors.email ? style.Error : null} />
+                    </Label>
+                    <Label>
+                        Name<br />
+                        <TextInput type="password" name="password" style={errors.email ? style.Error : null} />
                         {/* {errors.password && (
                             <p style={errors.password ? style.Error : null}>{errors.password}</p>
                         )} */}
-                    </label>
-                    <button>Sign In</button>
-                    <label className="checbox-container">
+                    </Label><br />
+                    <Button>Sign In</Button>
+                    <Label className="checbox-container">
                         <Field type="checkbox" name="rememberMe" />
-                        Keep me Signed In
-                    </label>
+                        Keep me Signed In<br />
+                    </Label>
                 </Form>
 
             </div>

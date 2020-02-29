@@ -10,7 +10,7 @@
   color: white;
   align-items: center;
   justify-content: center;
-  font-family: Oleo Script Swash Caps;;
+  font-family: Oleo Script Swash Caps, serif;
   margin-bottom: 2vh;
 }
 
@@ -115,6 +115,7 @@
   font-family: Cabin;
   color: #466A66;
 }
+
 .main-body .member{
   text-align: left;
 }
@@ -130,9 +131,8 @@
 
 .main-body .login {
   width: 40%;
-  height: 5vh;
+  padding: 2%;
   text-align: center;
-  line-height: 4.5vh;
   background-color: #BD7E4D;
   text-decoration: none;
   color: white;
@@ -143,6 +143,7 @@
   font-weight: 600;
   font-size: 24px;
 }
+
 .main-body .login:first-of-type {
   margin-right: 5%;
 }
@@ -154,40 +155,10 @@
   justify-content: center;
 }
 
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.list > * {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
 }
 
 label::before, input::before {
