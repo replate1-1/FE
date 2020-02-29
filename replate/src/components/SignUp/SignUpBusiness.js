@@ -24,7 +24,7 @@ class SignUpBusiness extends Component {
 
     style = {
         Error: {
-            borderColor: 'red'
+            border: '1px solid red'
         }
     }
 
@@ -151,8 +151,7 @@ class SignUpBusiness extends Component {
                 />
                 <Label htmlFor='phoneNumber' > Phone Number: </Label><br />
                 <TextInput
-                    type='number'
-                    pattern= "/^[0-9\b]+$/"
+                    type='text'
                     name='phoneNumber'
                     id='phoneNumber'
                     value={this.state.credentials.phoneNumber}

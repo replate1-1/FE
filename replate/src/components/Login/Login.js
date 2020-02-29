@@ -7,41 +7,64 @@ import * as yup from "yup";
 const Login = ({ touched, errors, status }) => {
 
     const [user, setUser] = useState({});
+    // const [driver, setDriver] = useState({});
+    // const [business, setBusiness] = useState({});
+
+    const style = {
+        Error: {
+            borderColor: 'red',
+            color: 'red'
+        }
+    }
 
     useEffect(() => {
         status && setUser(status);
     }, [status]);
 
+    // useEffect(() => {
+    //     if({driver}) {
+    //         status && setDriver(status);
+    //     } else if({business}) {
+    //         status && setBusiness(status);
+    //     } else {
+    //         return null;
+    //     }
+    // }, [status]);
+
     return (
         <div className="container">
             <h1>I'm enrolled or interested in....</h1>
-            <Button>Food Pickup</Button>
+            <Button >Food Pickup</Button>
             <Button>Driving</Button>
             <Button>Serving</Button>
             <div className="login-form">
                 <Form>
-                    <Label htmlFor="name">
+                    <Label>
                         Name<br />
-                        <TextInput type="text" name="name" />
-                        {errors.name && (
-                          <p className="formErrors">{errors.name}</p>
-                        )}
+                        <TextInput type="text" name="name" style={errors.name ? style.Error : null} />
+                        {/* {errors.name && (
+                            <p style={errors.name ? style.Error : null}>{errors.name}</p>
+                        )} */}
                     </Label>
-                    <Label htmlFor="email">
+                    <Label>
                         Email<br />
-                        <TextInput type="email" name="email" />
-                        {errors.email && (
-                          <p className="formErrors">{errors.email}</p>
-                        )}
+                        <TextInput type="email" name="email" style={errors.email ? style.Error : null} />
+                        {/* {errors.email && (
+                            <p style={errors.email ? style.Error : null}>{errors.email}</p>
+                        )} */}
                     </Label>
-                    <Label htmlFor="password">
-                        Password<br />
-                        <TextInput type="password" name="password" />
-                        {errors.password && (
-                          <p className="formErrors">{errors.password}</p>
-                        )}
+                    <Label>
+                        Name<br />
+                        <TextInput type="password" name="password" style={errors.email ? style.Error : null} />
+                        {/* {errors.password && (
+                            <p style={errors.password ? style.Error : null}>{errors.password}</p>
+                        )} */}
                     </Label><br />
-                    <Button>Login</Button>
+                    <Button>Sign In</Button>
+                    <Label className="checbox-container">
+                        <Field type="checkbox" name="rememberMe" />
+                        Keep me Signed In<br />
+                    </Label>
                 </Form>
 
             </div>
@@ -71,10 +94,32 @@ export default withFormik({
             .min(6, 'Your password must be at least 6 characters')
             .required('A password is required')
     }),
+    // handleSubmit: (values, { resetForm, setDriver, setBusiness }) => {
+    //     console.log('values', values);
+    //     if({driver}) {
+    //         axios
+    //             .post('https://replate-bw.herokuapp.com/api/user/driver')
+    //             .then(response => {
+    //                 console.log('response', response);
+    //                 setDriver(response.data, values);
+    //                 resetForm();
+    //             })
+    //             .catch(error => console.log('error', error));
+    //     } else if({business}) {
+    //         axios
+    //             .post('https://replate-bw.herokuapp.com/api/user/business')
+    //             .then(response => {
+    //                 console.log('response', response);
+    //                 setBusiness(response.data, values);
+    //                 resetForm();
+    //             })
+    //             .catch(error => console.log('error', error));
+    //     }
+    // }
     handleSubmit: (values, { resetForm, setStatus }) => {
         console.log('values', values);
         axios
-            .post('')
+            .post('https://replate-bw.herokuapp.com/')
             .then(response => {
                 console.log('response', response);
                 setStatus(response.data, values);
