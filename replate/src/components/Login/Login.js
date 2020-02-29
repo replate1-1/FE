@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
+import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
-import Header from "./Header";
-import Footer from "./Footer";
 
 const Login = ({ touched, errors, status }) => {
+
     const [user, setUser] = useState({});
     // const [driver, setDriver] = useState({});
     // const [business, setBusiness] = useState({});
@@ -33,7 +33,6 @@ const Login = ({ touched, errors, status }) => {
 
     return (
         <div className="container">
-            <Header />
             <h1>I'm enrolled or interested in....</h1>
             <button >Food Pickup</button>
             <button>Driving</button>
@@ -67,15 +66,15 @@ const Login = ({ touched, errors, status }) => {
                         Keep me Signed In
                     </label>
                 </Form>
+
             </div>
             <div>
                 <h2>Don't have an email?</h2>
                 <p>Give us a call at 555-888-8888 and a representative will help you create an account</p>
             </div>
-            <Footer />
         </div>
     )
-}
+};
 
 export default withFormik({
     mapPropsToValues: props => ({
@@ -89,7 +88,7 @@ export default withFormik({
             .required('A name is required'),
         email: yup
             .string()
-            .required('A vailed email address is required'),
+            .required('A valid email address is required'),
         password: yup
             .string()
             .min(6, 'Your password must be at least 6 characters')
