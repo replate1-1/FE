@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../imgs/ReplateLogoIcon.png';
+import logo from '../../imgs/ReplateLogoIcon.png';
 
 export default function Header() {
     return (

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { TextInput, Label } from "evergreen-ui";
+
+// IMPORT CONTEXT
+import { BusinessContext } from "../../contexts/BusinessContext";
 
 class SignUpBusiness extends Component {
 
@@ -36,7 +40,7 @@ class SignUpBusiness extends Component {
     passwordCheck = () =>{
         this.setState({invalid: {
             ...this.state.invalid, 
-            password: (this.state.credentials.passwordCheck != this.state.credentials.password)
+            password: (this.state.credentials.passwordCheck !== this.state.credentials.password)
         }})
     }
 
@@ -66,7 +70,7 @@ class SignUpBusiness extends Component {
             alert('password doesnt match');
             return;
         } else {
-            axios.post('https://replate-bw.herokuapp.com/api/user/business', 
+            axios.post('https://replate-bw.herokuapp.com/api/user/business',
             {
                 username: this.state.credentials.username,
                 email:  this.state.credentials.email,
@@ -82,14 +86,13 @@ class SignUpBusiness extends Component {
                 })
                 .catch(err => console.log(err));
         }
-    }
-
+    };
 
     render() {
         return (
             <form onSubmit={this.signUp}>
-                <label for='username' > Username: </label>
-                <input 
+                <Label htmlFor='username' > Username: </Label><br />
+                <TextInput
                     type='text'
                     name='username'
                     id='username'
@@ -97,8 +100,8 @@ class SignUpBusiness extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='password' > Password: </label> 
-                <input 
+                <Label htmlFor='password' > Password: </Label><br />
+                <TextInput
                     type='password'
                     name='password'
                     id='password'
@@ -108,8 +111,8 @@ class SignUpBusiness extends Component {
                     style={this.state.invalid.password ? this.style.Error : null}
                     required
                 />
-                <label for='passwordCheck' > Re-Enter Password: </label> 
-                <input 
+                <Label htmlFor='passwordCheck' > Re-Enter Password: </Label><br />
+                <TextInput
                     type='password'
                     name='passwordCheck'
                     id='passwordCheck'
@@ -119,8 +122,8 @@ class SignUpBusiness extends Component {
                     style={this.state.invalid.password ? this.style.Error : null}
                     required
                 />
-                <label for='email' > Email: </label>  
-                <input 
+                <Label htmlFor='email' > Email: </Label><br />
+                <TextInput
                     type='email'
                     name='email'
                     id='email'
@@ -128,8 +131,8 @@ class SignUpBusiness extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='businessName' > Business Name: </label> 
-                <input 
+                <Label htmlFor='businessName' > BusinessName: </Label><br />
+                <TextInput
                     type='text'
                     name='businessName'
                     id='businessName'
@@ -137,8 +140,8 @@ class SignUpBusiness extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='businessAddress' > Business Address: </label> 
-                <input 
+                <Label htmlFor='businessAddress' > businessAddress: </Label><br />
+                <TextInput
                     type='text'
                     name='businessAddress'
                     id='businessAddress'
@@ -146,16 +149,17 @@ class SignUpBusiness extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='phoneNumber' > Phone Number: </label>  
-                <input 
+                <Label htmlFor='phoneNumber' > Phone Number: </Label><br />
+                <TextInput
                     type='text'
+                    pattern= "/^[0-9\b]+$/"
                     name='phoneNumber'
                     id='phoneNumber'
                     value={this.state.credentials.phoneNumber}
                     onChange={this.handlePhoneNumber}
                     required
                 /><br />
-                <input type='submit' value='Sign Up' />
+                <TextInput type='submit' value='Sign Up' />
             </form>
         );
     }

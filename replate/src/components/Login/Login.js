@@ -1,14 +1,11 @@
-import { SessionContext } from "../../contexts/SessionContext";
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
+import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
-import Header from "../Header.js";
-import Footer from '../Footer.js';
 
 const Login = ({ touched, errors, status }) => {
 
-    const { logged, setLogged} = useContext(SessionContext);
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -18,44 +15,40 @@ const Login = ({ touched, errors, status }) => {
     return (
         <div className="container">
             <h1>I'm enrolled or interested in....</h1>
-            <button>Food Pickup</button>
-            <button>Driving</button>
-            <button>Serving</button>
+            <Button>Food Pickup</Button>
+            <Button>Driving</Button>
+            <Button>Serving</Button>
             <div className="login-form">
                 <Form>
-                    <label>
-                        Name
-                        <Field type="text" name="name" />
+                    <Label htmlFor="name">
+                        Name<br />
+                        <TextInput type="text" name="name" />
                         {errors.name && (
-                            <p className="formErrors">{errors.name}</p>
+                          <p className="formErrors">{errors.name}</p>
                         )}
-                    </label>
-                    <label>
-                        Email
-                        <Field type="email" name="email" />
+                    </Label>
+                    <Label htmlFor="email">
+                        Email<br />
+                        <TextInput type="email" name="email" />
                         {errors.email && (
-                            <p className="formErrors">{errors.email}</p>
+                          <p className="formErrors">{errors.email}</p>
                         )}
-                    </label>
-                    <label>
-                        Name
-                        <Field type="password" name="password" />
+                    </Label>
+                    <Label htmlFor="password">
+                        Password<br />
+                        <TextInput type="password" name="password" />
                         {errors.password && (
-                            <p className="formErrors">{errors.password}</p>
+                          <p className="formErrors">{errors.password}</p>
                         )}
-                    </label>
-                    <button>Sign In</button>
-                    <label className="checbox-container">
-                        <Field type="checkbox" name="rememberMe" />
-                        Keep me Signed In
-                    </label>
+                    </Label><br />
+                    <Button>Login</Button>
                 </Form>
+
             </div>
             <div>
                 <h2>Don't have an email?</h2>
                 <p>Give us a call at 555-888-8888 and a representative will help you create an account</p>
             </div>
-            <Footer />
         </div>
     )
 };

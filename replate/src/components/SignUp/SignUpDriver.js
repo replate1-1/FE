@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { TextInput, Label } from "evergreen-ui";
 
 class SignUpDriver extends Component {
     state = {
@@ -53,7 +54,7 @@ class SignUpDriver extends Component {
 
     signUp = e =>{
         e.preventDefault();
-        if(this.state.credentials.password != this.state.credentials.passwordCheck){
+        if(this.state.credentials.password !== this.state.credentials.passwordCheck){
             alert('password doesnt match')
             return;
         } else {
@@ -76,8 +77,8 @@ class SignUpDriver extends Component {
     render() {
         return (
             <form onSubmit={this.signUp}>
-                <label for='username' > Username: </label>
-                <input 
+                <Label htmlFor='username' > Username: </Label><br />
+                <TextInput
                     type='text'
                     name='username'
                     id='username'
@@ -85,8 +86,8 @@ class SignUpDriver extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='password' > Password: </label> 
-                <input 
+                <Label htmlFor='password' > Password: </Label><br />
+                <TextInput
                     type='password'
                     name='password'
                     id='password'
@@ -96,8 +97,8 @@ class SignUpDriver extends Component {
                     onBlur={this.passwordCheck}
                     required
                 />
-                <label for='passwordCheck' > Re-Enter Password: </label> 
-                <input 
+                <Label htmlFor='passwordCheck' > Re-Enter Password: </Label><br />
+                <TextInput
                     type='password'
                     name='passwordCheck'
                     id='passwordCheck'
@@ -107,8 +108,8 @@ class SignUpDriver extends Component {
                     style={this.state.invalid.password ? this.style.Error : null}
                     required
                 />
-                <label for='email' > Email: </label>  
-                <input 
+                <Label htmlFor='email' > Email: </Label><br />
+                <TextInput
                     type='email'
                     name='email'
                     id='email'
@@ -116,8 +117,8 @@ class SignUpDriver extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='volunteerName' > Volunteer Name: </label> 
-                <input 
+                <Label htmlFor='volunteerName' > Volunteer Name: </Label><br />
+                <TextInput
                     type='text'
                     name='volunteerName'
                     id='volunteerName'
@@ -125,8 +126,8 @@ class SignUpDriver extends Component {
                     onChange={this.handleChange}
                     required
                 />
-                <label for='phoneNumber' > Phone Number: </label>  
-                <input 
+                <Label htmlFor='phoneNumber' > Phone Number: </Label><br />
+                <TextInput
                     type='text'
                     name='phoneNumber'
                     id='phoneNumber'
@@ -134,7 +135,7 @@ class SignUpDriver extends Component {
                     onChange={this.handlePhoneNumber}
                     required
                 /><br />
-                <input type='submit' value='Sign Up' />
+                <TextInput type='submit' value='Sign Up' />
             </form>
         );
     }
