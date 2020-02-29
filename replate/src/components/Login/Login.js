@@ -4,6 +4,9 @@ import { withFormik, Form, Field } from 'formik';
 import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
 
+import Header from "../Header";
+import Footer from "../Footer";
+
 const Login = ({ touched, errors, status }) => {
 
     const [user, setUser] = useState({});
@@ -13,31 +16,44 @@ const Login = ({ touched, errors, status }) => {
     }, [status]);
 
     return (
-        <div className="login-form">
-            <Form>
-                <Label htmlFor="name">
-                    Name
-                    <TextInput type="text" name="name" />
-                    {errors.name && (
-                        <p className="formErrors">{errors.name}</p>
-                    )}
-                </Label>
-                <Label htmlFor="email">
-                    Email
-                    <TextInput type="email" name="email" />
-                    {errors.email && (
-                        <p className="formErrors">{errors.email}</p>
-                    )}
-                </Label>
-                <Label htmlFor="password">
-                    Password
-                    <TextInput type="password" name="password" />
-                    {errors.password && (
-                        <p className="formErrors">{errors.password}</p>
-                    )}
-                </Label>
-                <Button>Login</Button>
-            </Form>
+        <div className="container">
+            <Header />
+            <h1>I'm enrolled or interested in....</h1>
+            <Button>Food Pickup</Button>
+            <Button>Driving</Button>
+            <Button>Serving</Button>
+            <div className="login-form">
+                <Form>
+                    <Label htmlFor="name">
+                        Name<br />
+                        <TextInput type="text" name="name" />
+                        {errors.name && (
+                          <p className="formErrors">{errors.name}</p>
+                        )}
+                    </Label>
+                    <Label htmlFor="email">
+                        Email<br />
+                        <TextInput type="email" name="email" />
+                        {errors.email && (
+                          <p className="formErrors">{errors.email}</p>
+                        )}
+                    </Label>
+                    <Label htmlFor="password">
+                        Password<br />
+                        <TextInput type="password" name="password" />
+                        {errors.password && (
+                          <p className="formErrors">{errors.password}</p>
+                        )}
+                    </Label><br />
+                    <Button>Login</Button>
+                </Form>
+
+            </div>
+            <div>
+                <h2>Don't have an email?</h2>
+                <p>Give us a call at 555-888-8888 and a representative will help you create an account</p>
+            </div>
+            <Footer />
         </div>
     )
 };

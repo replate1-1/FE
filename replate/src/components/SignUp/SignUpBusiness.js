@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { TextInput, Label } from "evergreen-ui";
 
 // IMPORT CONTEXT
 import { BusinessContext } from "../../contexts/BusinessContext";
 
 class SignUpBusiness extends Component {
+
     state = {
         credentials : {
             username: '',
@@ -13,7 +15,16 @@ class SignUpBusiness extends Component {
             email: '',
             businessAddress: '',
             businessName: '',
-            phoneNumber: null,
+            phoneNumber: '',
+        },
+        invalid : {
+            password: false
+        }
+    }
+
+    style = {
+        Error: {
+            borderColor: 'red'
         }
     };
 
@@ -25,6 +36,24 @@ class SignUpBusiness extends Component {
             }
         })
     };
+
+    passwordCheck = () =>{
+        this.setState({invalid: {
+            ...this.state.invalid,
+            password: (this.state.credentials.passwordCheck !== this.state.credentials.password)
+        }})
+    }
+
+    handlePhoneNumber = e =>{
+        const re = /^[0-9\b]+$/;
+        if(e.target.value === '' || (re.test(e.target.value) && e.target.value.length < 9)){
+            this.setState({
+                credentials: {
+                    phoneNumber: e.target.value
+                }
+            });
+        }
+    }
 
     signUp = e =>{
         e.preventDefault();
@@ -44,63 +73,75 @@ class SignUpBusiness extends Component {
     render() {
         return (
             <form onSubmit={this.signUp}>
-                <label htmlFor='username' > Username: </label>
-                <input 
+                <Label htmlFor='username' > Username: </Label><br />
+                <TextInput
                     type='text'
                     name='username'
                     id='username'
                     value={this.state.credentials.username}
                     onChange={this.handleChange}
+                    required
                 />
-                <label htmlFor='password' > Password: </label>
-                <input 
+                <Label htmlFor='password' > Password: </Label><br />
+                <TextInput
                     type='password'
                     name='password'
                     id='password'
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
+                    onBlur={this.passwordCheck}
+                    style={this.state.invalid.password ? this.style.Error : null}
+                    required
                 />
-                <label htmlFor='password' > Re-Enter Password: </label>
-                <input 
+                <Label htmlFor='passwordCheck' > Re-Enter Password: </Label><br />
+                <TextInput
                     type='password'
                     name='passwordCheck'
                     id='passwordCheck'
                     value={this.state.credentials.passwordCheck}
                     onChange={this.handleChange}
+                    onBlur={this.passwordCheck}
+                    style={this.state.invalid.password ? this.style.Error : null}
+                    required
                 />
-                <label htmlFor='email' > Email: </label>
-                <input 
+                <Label htmlFor='email' > Email: </Label><br />
+                <TextInput
                     type='email'
                     name='email'
                     id='email'
                     value={this.state.credentials.email}
                     onChange={this.handleChange}
+                    required
                 />
-                <label htmlFor='businessName' > BusinessName: </label>
-                <input 
+                <Label htmlFor='businessName' > BusinessName: </Label><br />
+                <TextInput
                     type='text'
                     name='businessName'
                     id='businessName'
                     value={this.state.credentials.businessName}
                     onChange={this.handleChange}
+                    required
                 />
-                <label htmlFor='businessAddress' > businessAddress: </label>
-                <input 
+                <Label htmlFor='businessAddress' > businessAddress: </Label><br />
+                <TextInput
                     type='text'
                     name='businessAddress'
                     id='businessAddress'
                     value={this.state.credentials.businessAddress}
                     onChange={this.handleChange}
+                    required
                 />
-                <label htmlFor='phoneNumber' > Phone Number: </label>
-                <input 
-                    type='number'
+                <Label htmlFor='phoneNumber' > Phone Number: </Label><br />
+                <TextInput
+                    type='text'
+                    pattern= "/^[0-9\b]+$/"
                     name='phoneNumber'
                     id='phoneNumber'
                     value={this.state.credentials.phoneNumber}
-                    onChange={this.handleChange}
+                    onChange={this.handlePhoneNumber}
+                    required
                 /><br />
-                <input type='submit' value='Sign Up' />
+                <TextInput type='submit' value='Sign Up' />
             </form>
         );
     }
