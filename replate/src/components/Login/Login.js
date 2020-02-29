@@ -41,21 +41,21 @@ const Login = ({ touched, errors, status }) => {
                 <Form>
                     <Label>
                         Name<br />
-                        <TextInput type="text" name="name" style={errors.name ? style.Error : null} />
+                        <Field type="text" name="name" style={errors.name ? style.Error : null} />
                         {/* {errors.name && (
                             <p style={errors.name ? style.Error : null}>{errors.name}</p>
                         )} */}
                     </Label>
                     <Label>
                         Email<br />
-                        <TextInput type="email" name="email" style={errors.email ? style.Error : null} />
+                        <Field type="email" name="email" style={errors.email ? style.Error : null} />
                         {/* {errors.email && (
                             <p style={errors.email ? style.Error : null}>{errors.email}</p>
                         )} */}
                     </Label>
                     <Label>
                         Name<br />
-                        <TextInput type="password" name="password" style={errors.email ? style.Error : null} />
+                        <Field type="password" name="password" style={errors.email ? style.Error : null} />
                         {/* {errors.password && (
                             <p style={errors.password ? style.Error : null}>{errors.password}</p>
                         )} */}
