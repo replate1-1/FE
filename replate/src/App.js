@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // IMPORT ASSETS
 import './css/App.css';
+import mainPhotoLeft from './imgs/MainPhotoLeft.png';
+import mainPhotoRight from './imgs/MainPhotoRight.png';
 
 // IMPORT UTILITIES
 import PrivateRoute from './utilities/PrivateRoute';
