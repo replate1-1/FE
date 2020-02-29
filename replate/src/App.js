@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // IMPORT ASSETS
 import './css/App.css';
+
+
 import mainPhotoLeft from './imgs/MainPhotoLeft.png';
 import mainPhotoRight from './imgs/MainPhotoRight.png';
 // IMPORT UTILITIES
@@ -18,6 +20,9 @@ import Driver from './components/Driver/Driver';
 import SignUp from './components/SignUp/SignUp';
 import SignUpDriver from './components/SignUp/SignUpDriver';
 import SignUpBusiness from './components/SignUp/SignUpBusiness';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
+
 function App() {
   const [logged, setLogged]         = useState( localStorage.getItem("token") );
   const [business, setBusiness]     = useState([]);
