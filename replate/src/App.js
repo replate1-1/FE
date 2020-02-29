@@ -6,6 +6,7 @@ import './css/App.css';
 import mainPhotoLeft from './imgs/MainPhotoLeft.png';
 import mainPhotoRight from './imgs/MainPhotoRight.png';
 import foodKitchen from './imgs/FoodKitchen.png';
+
 // IMPORT UTILITIES
 import PrivateRoute from './utilities/PrivateRoute';
 
