@@ -8,6 +8,10 @@ import {DriverContext} from "../../contexts/DriverContext";
 
 const LoginBusiness = ({ touched, errors, status }) => {
 
+	console.log("Touched: ", touched);
+	console.log("Errors: ", errors);
+	console.log("Status: ", status);
+
 	const { business, setBusiness }     = useContext(BusinessContext);
 	const { driver, setDriver }         = useContext(DriverContext);
 
@@ -23,21 +27,21 @@ const LoginBusiness = ({ touched, errors, status }) => {
 			<Form>
 				<Label>
 					Username:<br />
-					<Field type="text" name="name" style={errors.name ? style.Error : null} />
+					<Field type="text" name="username" style={errors.username ? style.Error : null} />
 					{/* {errors.name && (
 						<p style={errors.name ? style.Error : null}>{errors.name}</p>
 					)} */}
 				</Label>
-				<Label>
-					Email:<br />
-					<Field type="email" name="email" style={errors.email ? style.Error : null} />
-					{/* {errors.email && (
-						<p style={errors.email ? style.Error : null}>{errors.email}</p>
-					)} */}
-				</Label>
+				{/*<Label>*/}
+				{/*	Email:<br />*/}
+				{/*	<Field type="email" name="email" style={errors.email ? style.Error : null} />*/}
+				{/*	/!* {errors.email && (*/}
+				{/*		<p style={errors.email ? style.Error : null}>{errors.email}</p>*/}
+				{/*	)} *!/*/}
+				{/*</Label>*/}
 				<Label>
 					Password:<br />
-					<Field type="password" name="password" style={errors.email ? style.Error : null} />
+					<Field type="password" name="password" style={errors.password ? style.Error : null} />
 					{/* {errors.password && (
 						<p style={errors.password ? style.Error : null}>{errors.password}</p>
 					)} */}
@@ -54,17 +58,17 @@ const LoginBusiness = ({ touched, errors, status }) => {
 
 const FormikLoginBusiness = withFormik({
 	mapPropsToValues: props => ({
-		name: "",
-		email: "",
+		username: "",
+		// email: "",
 		password: ""
 	}),
 	validationSchema: yup.object().shape({
-		name: yup
+		username: yup
 			.string()
 			.required('A name is required'),
-		email: yup
-			.string()
-			.required('A valid email address is required'),
+		// email: yup
+		// 	.string()
+		// 	.required('A valid email address is required'),
 		password: yup
 			.string()
 			.min(6, 'Your password must be at least 6 characters')
@@ -74,14 +78,15 @@ const FormikLoginBusiness = withFormik({
 
 		console.log("formikBag: ", formikBag);
 		console.log('values', values);
-		// console.log('User: Business: ', setBusiness);
-		// console.log('User: Driver: ', driver);
+
 		axios
-			.post('https://replate-bw.herokuapp.com/api/user/business')
+			.post('https://replate-bw.herokuapp.com/api/login/business', values)
 			.then(response => {
 				console.log('response', response);
+				formikBag.props.history.push('/business');
 				// setBusiness(response.data, values);
 				formikBag.resetForm();
+				formikBag.setSubmitting(false);
 			})
 			.catch(error => console.log('error', error));
 	}

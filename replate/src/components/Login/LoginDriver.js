@@ -23,21 +23,21 @@ const LoginDriver = ({ touched, errors, status }) => {
 			<Form>
 				<Label>
 					Username:<br />
-					<Field type="text" name="name" style={errors.name ? style.Error : null} />
+					<Field type="text" name="username" style={errors.username ? style.Error : null} />
 					{/* {errors.name && (
 						<p style={errors.name ? style.Error : null}>{errors.name}</p>
 					)} */}
 				</Label>
-				<Label>
-					Email:<br />
-					<Field type="email" name="email" style={errors.email ? style.Error : null} />
-					{/* {errors.email && (
-						<p style={errors.email ? style.Error : null}>{errors.email}</p>
-					)} */}
-				</Label>
+				{/*<Label>*/}
+				{/*	Email:<br />*/}
+				{/*	<Field type="email" name="email" style={errors.email ? style.Error : null} />*/}
+				{/*	/!* {errors.email && (*/}
+				{/*		<p style={errors.email ? style.Error : null}>{errors.email}</p>*/}
+				{/*	)} *!/*/}
+				{/*</Label>*/}
 				<Label>
 					Password:<br />
-					<Field type="password" name="password" style={errors.email ? style.Error : null} />
+					<Field type="password" name="password" style={errors.password ? style.Error : null} />
 					{/* {errors.password && (
 						<p style={errors.password ? style.Error : null}>{errors.password}</p>
 					)} */}
@@ -54,17 +54,17 @@ const LoginDriver = ({ touched, errors, status }) => {
 
 const FormikLoginDriver = withFormik({
 	mapPropsToValues: props => ({
-		name: "",
-		email: "",
+		username: "",
+		// email: "",
 		password: ""
 	}),
 	validationSchema: yup.object().shape({
-		name: yup
+		username: yup
 			.string()
 			.required('A name is required'),
-		email: yup
-			.string()
-			.required('A valid email address is required'),
+		// email: yup
+		// 	.string()
+		// 	.required('A valid email address is required'),
 		password: yup
 			.string()
 			.min(6, 'Your password must be at least 6 characters')
@@ -74,16 +74,17 @@ const FormikLoginDriver = withFormik({
 
 		console.log("formikBag: ", formikBag);
 		console.log('values', values);
-		// console.log('User: Business: ', business);
-		// console.log('User: Driver: ', setDriver);
-		    axios
-		        .post('https://replate-bw.herokuapp.com/api/user/driver')
-		        .then(response => {
-		            console.log('response', response);
-		            // setDriver(response.data, values);
-		            formikBag.resetForm();
-		        })
-		        .catch(error => console.log('error', error));
+
+		axios
+			.post('https://replate-bw.herokuapp.com/api/login/driver', values)
+		  .then(response => {
+		  	console.log('response', response);
+			  formikBag.props.history.push('/driver');
+		    // setDriver(response.data, values);
+		    formikBag.resetForm();
+			  formikBag.setSubmitting(false);
+		    })
+		    .catch(error => console.log('error', error));
 	}
 })(LoginDriver);
 
