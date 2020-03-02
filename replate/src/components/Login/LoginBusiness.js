@@ -12,9 +12,6 @@ const LoginBusiness = ({ touched, errors, status }) => {
 	console.log("Errors: ", errors);
 	console.log("Status: ", status);
 
-	const { business, setBusiness }     = useContext(BusinessContext);
-	const { driver, setDriver }         = useContext(DriverContext);
-
 	const style = {
 		Error: {
 			border: '1px solid red',
@@ -28,17 +25,17 @@ const LoginBusiness = ({ touched, errors, status }) => {
 				<Label>
 					Username:<br />
 					<Field type="text" name="username" style={errors.username ? style.Error : null} />
-					{/* {errors.name && (
-						<p style={errors.name ? style.Error : null}>{errors.name}</p>
+					{/* {errors.username && (
+						<p style={errors.username ? style.Error : null}>{errors.username}</p>
 					)} */}
 				</Label>
-				{/*<Label>*/}
-				{/*	Email:<br />*/}
-				{/*	<Field type="email" name="email" style={errors.email ? style.Error : null} />*/}
-				{/*	/!* {errors.email && (*/}
-				{/*		<p style={errors.email ? style.Error : null}>{errors.email}</p>*/}
-				{/*	)} *!/*/}
-				{/*</Label>*/}
+				<Label>
+					Email:<br />
+					<Field type="email" name="email" style={errors.email ? style.Error : null} />
+					{/* {errors.email && (
+						<p style={errors.email ? style.Error : null}>{errors.email}</p>
+					)} */}
+				</Label>
 				<Label>
 					Password:<br />
 					<Field type="password" name="password" style={errors.password ? style.Error : null} />
@@ -59,16 +56,16 @@ const LoginBusiness = ({ touched, errors, status }) => {
 const FormikLoginBusiness = withFormik({
 	mapPropsToValues: props => ({
 		username: "",
-		// email: "",
+		email: "",
 		password: ""
 	}),
 	validationSchema: yup.object().shape({
 		username: yup
 			.string()
 			.required('A name is required'),
-		// email: yup
-		// 	.string()
-		// 	.required('A valid email address is required'),
+		email: yup
+			.string()
+			.required('A valid email address is required'),
 		password: yup
 			.string()
 			.min(6, 'Your password must be at least 6 characters')
@@ -84,7 +81,6 @@ const FormikLoginBusiness = withFormik({
 			.then(response => {
 				console.log('response', response);
 				formikBag.props.history.push('/business');
-				// setBusiness(response.data, values);
 				formikBag.resetForm();
 				formikBag.setSubmitting(false);
 			})
