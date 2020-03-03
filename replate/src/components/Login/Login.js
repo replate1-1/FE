@@ -8,7 +8,7 @@ import {DriverContext} from "../../contexts/DriverContext";
 import FormikLoginBusiness from "./LoginBusiness";
 import FormikLoginDriver from "./LoginDriver";
 
-const Login = () => {
+const Login = (props) => {
 
     const { business, setBusiness }     = useContext(BusinessContext);
     const { driver, setDriver }         = useContext(DriverContext);
@@ -22,21 +22,18 @@ const Login = () => {
         setDriver(true);
         setBusiness(false);
     };
-
-    console.log("business: ", business);
-    console.log("driver: ", driver);
-
+    
     return (
         <div className="container">
-            <h1>I'm enrolled or interested in....</h1>
+            <h1>I'm enrolled or interested in...</h1>
             <Button onClick={handleClickBusiness}>Food Pickup</Button>
             <Button onClick={handleClickDriver}>Driving</Button>
             <Button onClick={() => {}}>Serving</Button>
             {driver ? (
               <FormikLoginDriver/>
-            ) : (
+            ) : business ? (
               <FormikLoginBusiness/>
-            )}
+            ) : <> </>}
             <div>
                 <h2>Don't have an email?</h2>
                 <p>Give us a call at 555-888-8888 and a representative will help you create an account</p>

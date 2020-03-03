@@ -6,6 +6,10 @@ import '../../css/SingUp.css';
 import { BusinessContext } from "../../contexts/BusinessContext";
 
 class SignUpBusiness extends Component {
+    constructor(props){
+        super(props);
+    }
+
     state = {
         credentials : {
             username: '',
@@ -81,7 +85,7 @@ class SignUpBusiness extends Component {
             )
                 .then(res =>{
                     console.log(res);
-                    this.props.history.push('/Login');
+                    this.props.props.push('/Login');
                 })
                 .catch(err => console.log(err));
         }
@@ -91,7 +95,7 @@ class SignUpBusiness extends Component {
         return (
             <div className='form'> 
                 <form onSubmit={this.signUp}>
-                    <label For='username' > Username: </label>
+                    <label> Username: </label>
                     <input
                         type='text'
                         name='username'
@@ -100,7 +104,7 @@ class SignUpBusiness extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='password' > Password: </label>
+                    <label> Password: </label>
                     <input
                         type='password'
                         name='password'
@@ -111,7 +115,7 @@ class SignUpBusiness extends Component {
                         style={this.state.invalid.password ? this.style.Error : null}
                         required
                     />
-                    <label For='passwordCheck' > Re-Enter Password: </label>
+                    <label> Re-Enter Password: </label>
                     <input
                         type='password'
                         name='passwordCheck'
@@ -122,7 +126,7 @@ class SignUpBusiness extends Component {
                         style={this.state.invalid.password ? this.style.Error : null}
                         required
                     />
-                    <label For='email' > Email: </label>
+                    <label> Email: </label>
                     <input
                         type='email'
                         name='email'
@@ -131,7 +135,7 @@ class SignUpBusiness extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='businessName' > Business Name: </label>
+                    <label > Business Name: </label>
                     <input
                         type='text'
                         name='businessName'
@@ -140,7 +144,7 @@ class SignUpBusiness extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='businessAddress' > Business Address: </label>
+                    <label> Business Address: </label>
                     <input
                         type='text'
                         name='businessAddress'
@@ -149,14 +153,13 @@ class SignUpBusiness extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='phoneNumber' > Phone Number: </label>
+                    <label> Phone Number: </label>
                     <input
                         type='text'
                         name='phoneNumber'
                         id='phoneNumber'
                         value={this.state.credentials.phoneNumber}
                         onChange={this.handlePhoneNumber}
-                        required
                     /><br />
                     <input type='submit' value='Sign Up' />
                 </form>
