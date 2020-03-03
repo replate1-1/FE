@@ -45,7 +45,7 @@ const LoginBusiness = ({ touched, errors, status }) => {
 				</Label><br />
 				<Button type="submit">Sign In</Button>
 				<Label className="checbox-container">
-					<Field type="checkbox" name="rememberMe" />
+					<Field type="checkbox" name="rememberMe" className="checkbox"/>
 					Keep me Signed In<br />
 				</Label>
 			</Form>

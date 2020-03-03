@@ -2,7 +2,9 @@
   font-family: Delius Swash Caps, serif;
   min-height: calc(90vh - 20px - 4.4vh);
 }
-
+.App-container {
+  margin: 2%;
+}
 .header{
   display: flex;
   width: 100%;

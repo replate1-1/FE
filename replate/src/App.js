@@ -69,7 +69,15 @@ function App() {
                 )} />
                 <Route exact path="/Login" component={Login} />
                 <Route exact path='/SignUp' component={SignUp} />
+
                 <PrivateRoute path='/Driver' component={Driver} />
+
+                {/*<PrivateRoute path='/Driver' component={Driver} />*/}
+                <Route
+                  path='/Driver'
+                  component={Driver}
+                  // render={() => (<Driver cookies={props.cookies} />)}
+                />
               </div>
             </DriverContext.Provider>
           </BusinessContext.Provider>

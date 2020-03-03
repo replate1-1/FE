@@ -48,7 +48,6 @@ class LoginDriver extends Component {
 			color: 'red'
 		}
 	};
-
 	render(){
 		return (
 			<div className="login-form">
