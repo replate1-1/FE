@@ -14,6 +14,7 @@ input, select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    box-sizing: border-box;
 }
 
 input[type=submit] {
@@ -24,4 +25,8 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
     float: right;
+}
+
+input.checkbox {
+    width: auto;
 }
