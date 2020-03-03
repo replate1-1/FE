@@ -48,6 +48,7 @@ class LoginDriver extends Component {
 			color: 'red'
 		}
 	};
+
 	render(){
 		return (
 			<div className="login-form">
@@ -86,7 +87,7 @@ class LoginDriver extends Component {
 					</label>
 					<input type="submit" value='Submit' />
 					<label className="checbox-container">
-						<input type="checkbox" name="rememberMe" />
+						<input type="checkbox" name="rememberMe" className="checkbox" />
 						Keep me Signed In<br />
 					</label>
 				</form>

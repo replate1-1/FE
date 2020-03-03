@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../css/SingUp.css';
+import '../../css/SignUp.css';
 
 // IMPORT CONTEXT
 import { BusinessContext } from "../../contexts/BusinessContext";
