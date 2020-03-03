@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../css/SingUp.css';
+import '../../css/SignUp.css';
 
 class SignUpDriver extends Component {
     constructor(props){

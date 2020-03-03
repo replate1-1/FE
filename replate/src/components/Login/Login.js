@@ -5,8 +5,8 @@ import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
 import {BusinessContext} from "../../contexts/BusinessContext";
 import {DriverContext} from "../../contexts/DriverContext";
-import FormikLoginBusiness from "./LoginBusiness";
-import FormikLoginDriver from "./LoginDriver";
+import LoginBusiness from "./LoginBusiness";
+import LoginDriver from "./LoginDriver";
 
 const Login = (props) => {
 
@@ -30,9 +30,9 @@ const Login = (props) => {
             <Button onClick={handleClickDriver}>Driving</Button>
             <Button onClick={() => {}}>Serving</Button>
             {driver ? (
-              <FormikLoginDriver/>
+              <LoginDriver/>
             ) : business ? (
-              <FormikLoginBusiness/>
+              <LoginBusiness/>
             ) : <> </>}
             <div>
                 <h2>Don't have an email?</h2>
