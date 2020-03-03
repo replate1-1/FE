@@ -35,7 +35,7 @@ function App() {
       <Router>
          <BusinessContext.Provider value={{ business, setBusiness }}>
             <DriverContext.Provider value={{ driver, setDriver }}>
-              <div className="App">
+              <div className="App-container">
                 <Route exact path='/' render={props=> (
                   <div className='main-body'>
                     <div>
@@ -71,7 +71,12 @@ function App() {
                 <Route exact path='/SignUp' component={SignUp} />
                 <Route path='/SignUp/Driver' component={SignUpDriver} />
                 <Route path='/SignUp/Business' component={SignUpBusiness} />
-                <PrivateRoute path='/Driver' component={Driver} />
+                {/*<PrivateRoute path='/Driver' component={Driver} />*/}
+                <Route
+                  path='/Driver'
+                  component={Driver}
+                  // render={() => (<Driver cookies={props.cookies} />)}
+                />
               </div>
             </DriverContext.Provider>
           </BusinessContext.Provider>

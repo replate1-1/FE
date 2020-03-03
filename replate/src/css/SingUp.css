@@ -1,8 +1,7 @@
 .form{
     display: flex;
-    width: 98%;
+    width: 100%;
     min-height: 85.8vh;
-    margin-left: 2%;
 }
 
 input {
