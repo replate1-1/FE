@@ -5,7 +5,7 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
+            <div className='signup'>
                 <Link to='/SignUp/Business'> Business </Link>
                 <br />
                 <Link to='/SignUp/Driver'> Driver </Link>
