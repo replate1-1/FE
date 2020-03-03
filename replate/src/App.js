@@ -35,7 +35,7 @@ function App() {
       <Router>
          <BusinessContext.Provider value={{ business, setBusiness }}>
             <DriverContext.Provider value={{ driver, setDriver }}>
-              <div className="App">
+              <div className="App-container">
                 <Route exact path='/' render={props=> (
                   <div className='main-body'>
                     <div>
