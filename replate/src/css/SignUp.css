@@ -1,7 +1,10 @@
 .form{
     display: flex;
-    width: 98%;
-    margin-left: 2%;
+    width: 100%;
+    /*margin-left: 2%;*/
+}
+form {
+    width: 100%;
 }
 
 input {
