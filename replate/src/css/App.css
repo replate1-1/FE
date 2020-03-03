@@ -1,5 +1,6 @@
 .App {
   font-family: Delius Swash Caps, serif;
+  min-height: calc(90vh - 20px - 4.4vh);
 }
 .App-container {
   margin: 2%;
@@ -13,7 +14,8 @@
   align-items: center;
   justify-content: center;
   font-family: Oleo Script Swash Caps, serif;
-  margin-bottom: 2vh;
+  min-height: 10vh;
+  margin-bottom: 20px;
 }
 
 .header > img {
@@ -164,12 +166,16 @@
   align-items: center;
 }
 
+.list > div {
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .signup{
-  min-height: 84vh;
+  width: 100%;
 }
 
 .container {
-  min-height: 84.2vh;
 }
 
 label::before, input::before {

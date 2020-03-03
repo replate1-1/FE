@@ -30,12 +30,12 @@ function App() {
 
   return (
 
-    <div className='App'>
+    <div>
       <Header />
       <Router>
          <BusinessContext.Provider value={{ business, setBusiness }}>
             <DriverContext.Provider value={{ driver, setDriver }}>
-              <div className="App-container">
+              <div className='App'>
                 <Route exact path='/' render={props=> (
                   <div className='main-body'>
                     <div>
@@ -69,8 +69,9 @@ function App() {
                 )} />
                 <Route exact path="/Login" component={Login} />
                 <Route exact path='/SignUp' component={SignUp} />
-                <Route path='/SignUp/Driver' component={SignUpDriver} />
-                <Route path='/SignUp/Business' component={SignUpBusiness} />
+
+                <PrivateRoute path='/Driver' component={Driver} />
+
                 {/*<PrivateRoute path='/Driver' component={Driver} />*/}
                 <Route
                   path='/Driver'

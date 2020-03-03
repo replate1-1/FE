@@ -79,6 +79,7 @@ const FormikLoginBusiness = withFormik({
 		axios
 			.post('https://replate-bw.herokuapp.com/api/login/business', values)
 			.then(response => {
+				this.localStorage.setItem('token', response);
 				console.log('response', response);
 				formikBag.props.history.push('/business');
 				formikBag.resetForm();

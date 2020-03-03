@@ -3,6 +3,10 @@ import axios from 'axios';
 import '../../css/SingUp.css';
 
 class SignUpDriver extends Component {
+    constructor(props){
+        super(props);
+    }
+
     state = {
         credentials : {
             username: '',
@@ -68,17 +72,18 @@ class SignUpDriver extends Component {
                 })
                 .then(res =>{
                     console.log(res);
-                    this.props.history.push('/Login');
+                    this.props.props.push('/Login');
                 })
                 .catch(err => console.log(err));
         }
+        console.log(this.props)
     }
 
     render() {
         return (
             <div className='form'> 
                 <form onSubmit={this.signUp}>
-                    <label For='username' > Username: </label>
+                    <label> Username: </label>
                     <input
                         type='text'
                         name='username'
@@ -87,7 +92,7 @@ class SignUpDriver extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='password' > Password: </label>
+                    <label> Password: </label>
                     <input
                         type='password'
                         name='password'
@@ -98,7 +103,7 @@ class SignUpDriver extends Component {
                         onBlur={this.passwordCheck}
                         required
                     />
-                    <label For='passwordCheck' > Re-Enter Password: </label>
+                    <label> Re-Enter Password: </label>
                     <input
                         type='password'
                         name='passwordCheck'
@@ -109,7 +114,7 @@ class SignUpDriver extends Component {
                         style={this.state.invalid.password ? this.style.Error : null}
                         required
                     />
-                    <label htmlFor='email' > Email: </label>
+                    <label> Email: </label>
                     <input
                         type='email'
                         name='email'
@@ -118,7 +123,7 @@ class SignUpDriver extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='volunteerName' > Volunteer Name: </label>
+                    <label> Volunteer Name: </label>
                     <input
                         type='text'
                         name='volunteerName'
@@ -127,14 +132,13 @@ class SignUpDriver extends Component {
                         onChange={this.handleChange}
                         required
                     />
-                    <label For='phoneNumber' > Phone Number: </label>
+                    <label> Phone Number: </label>
                     <input
                         type='text'
                         name='phoneNumber'
                         id='phoneNumber'
                         value={this.state.credentials.phoneNumber}
                         onChange={this.handlePhoneNumber}
-                        required
                     />
                     <input type='submit' value='Sign Up' />
                 </form>
