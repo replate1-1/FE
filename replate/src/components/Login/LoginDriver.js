@@ -49,10 +49,27 @@ class LoginDriver extends Component {
 		}
 	};
 
+	signin = e => {
+		e.preventDefault();
+		if(!this.state.passwordCheck){
+			return;
+		}
+		
+		axios.post('https://replate-bw.herokuapp.com/api/login/driver', {
+			username: this.state.credentials.username,
+			password: this.state.credentials.password
+		})
+		.then(res => {
+			console.log(res);
+			this.props.push('/Driver');
+		})
+		.catch(err => console.log(err));
+	}
+
 	render(){
 		return (
 			<div className="login-form">
-				<form>
+				<form onSubmit={this.signin}>
 					<label>
 						Username:
 						<input 
