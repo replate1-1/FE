@@ -30,9 +30,9 @@ const Login = (props) => {
             <Button onClick={handleClickDriver}>Driving</Button>
             <Button onClick={() => {}}>Serving</Button>
             {driver ? (
-              <LoginDriver/>
+              <LoginDriver props={props.history}/>
             ) : business ? (
-              <LoginBusiness/>
+              <LoginBusiness props={props.history}/>
             ) : <> </>}
             <div>
                 <h2>Don't have an email?</h2>
