@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TextInput, Button, Label } from "evergreen-ui";
+import Location from '../Location/Location';
 
 class Driver extends Component {
     render() {
@@ -48,6 +49,7 @@ class Driver extends Component {
                             <p>business<br />business street</p>
                             <Button>Pickup/Stop</Button>
                         </div>
+                        <Location />
                     </div>
                 </div>
             </div>

@@ -62,6 +62,7 @@ class SignUpDriver extends Component {
             alert('password doesnt match')
             return;
         } else {
+            console.log(this.state.credentials)
             axios.post('https://replate-bw.herokuapp.com/api/user/driver', 
                 {
                     username: this.state.credentials.username,
