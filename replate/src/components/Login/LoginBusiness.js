@@ -40,7 +40,7 @@ const LoginBusiness = () => {
 				console.log("response: ", response);
 				setLogin(login);
 				localStorage.setItem('token', response.data.token);
-				history.push("/business");
+				history.push("/Business");
 			})
 			.catch(error => {
 				localStorage.removeItem("token");
