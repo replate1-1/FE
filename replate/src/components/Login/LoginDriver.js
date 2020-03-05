@@ -49,7 +49,7 @@ class LoginDriver extends Component {
 		}
 	};
 
-	signin = e => {
+	signIn = e => {
 		e.preventDefault();
 		console.log(this.state);
 		if(!this.state.passwordCheck){
@@ -70,7 +70,7 @@ class LoginDriver extends Component {
 	render(){
 		return (
 			<div className="login-form">
-				<form onSubmit={this.signin}>
+				<form onSubmit={this.signIn}>
 					<label>
 						Username:
 						<input 
