@@ -35,10 +35,11 @@ const LoginBusiness = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		axiosWithAuth()
-			.post("https://replate-bw.herokuapp.com/api/login/business", login)
+			.post("api/login/business", login)
 			.then(response => {
 				console.log("response: ", response);
 				setLogin(login);
+				localStorage.setItem('token', response.data.token);
 				history.push("/business");
 			})
 			.catch(error => {
