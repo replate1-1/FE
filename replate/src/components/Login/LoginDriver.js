@@ -5,27 +5,28 @@ import {BusinessContext} from "../../contexts/BusinessContext";
 import {DriverContext} from "../../contexts/DriverContext";
 
 class LoginDriver extends Component {
+
 	state = {
 		credentials: { 
 			username: '',
 			email: '',
 			password: ''
 		},
-		passwordCheck : false
+		passwordCheck : true
 	}
 
 	handleChange = e => {
 		if(e.target.name === 'password'){
-			if(e.target.value.length >= 6){
+			if(e.target.value.length <= 5){
 				this.setState({
-					password: true,
+					passwordCheck: true,
 					credentials: {
 						...this.state.credentials,
 					}
 				})
 			} else {
 				this.setState({
-					password: false,
+					passwordCheck: false,
 					credentials: {
 						...this.state.credentials,
 					}
@@ -38,7 +39,6 @@ class LoginDriver extends Component {
 				...this.state.credentials,
 				[e.target.name]: e.target.value
 			}
-			
 		})
 	}
 
@@ -51,17 +51,18 @@ class LoginDriver extends Component {
 
 	signin = e => {
 		e.preventDefault();
+		console.log(this.state);
 		if(!this.state.passwordCheck){
 			return;
 		}
-		
 		axios.post('https://replate-bw.herokuapp.com/api/login/driver', {
 			username: this.state.credentials.username,
 			password: this.state.credentials.password
 		})
 		.then(res => {
 			console.log(res);
-			this.props.push('/Driver');
+			localStorage.setItem('token', res.data.token);
+			this.props.props.push('/Driver');
 		})
 		.catch(err => console.log(err));
 	}
