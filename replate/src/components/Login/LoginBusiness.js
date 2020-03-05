@@ -12,12 +12,10 @@ const LoginBusiness = () => {
 	let history = useHistory();
 
 	const [ login, setLogin ] = useState({
-		credentials: {
-			username: '',
-			email: '',
-			password: ''
-		},
-		passwordCheck : false
+		username: '',
+		email: '',
+		password: '',
+		passwordCheck : true
 	});
 
 	const style = {
@@ -57,7 +55,7 @@ const LoginBusiness = () => {
 					<input
 						type="text"
 						name="username"
-						value={login.credentials.username}
+						value={login.username}
 						onChange={handleChange}
 						required
 					/>
@@ -68,7 +66,7 @@ const LoginBusiness = () => {
 						type="email"
 						pattern='^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'
 						name="email"
-						value={login.credentials.email}
+						value={login.email}
 						onChange={handleChange}
 						required
 					/>
@@ -78,7 +76,7 @@ const LoginBusiness = () => {
 					<input
 						type="password"
 						name="password"
-						value={login.credentials.password}
+						value={login.password}
 						onChange={handleChange}
 						style={!login.passwordCheck ? style.Error : null}
 						required
