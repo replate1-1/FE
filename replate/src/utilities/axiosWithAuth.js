@@ -1,11 +1,13 @@
 import axios from 'axios';
 
 export const axiosWithAuth = () =>{
-    return axios.create({
-        baseURL: 'temp',
 
+    const token = localStorage.getItem("token");
+
+    return axios.create({
         headers: {
-            Authorization: localStorage.getItem('token')
-        }
+            Authorization: token
+        },
+        baseURL: 'https://replate-bw.herokuapp.com/'
     })
-}
+};

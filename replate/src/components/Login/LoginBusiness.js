@@ -5,15 +5,19 @@ import { TextInput, Button, Label } from "evergreen-ui";
 import * as yup from "yup";
 import {BusinessContext} from "../../contexts/BusinessContext";
 import {DriverContext} from "../../contexts/DriverContext";
+import {axiosWithAuth} from "../../utilities/axiosWithAuth";
 
 const LoginBusiness = () => {
 
 	let history = useHistory();
 
 	const [ login, setLogin ] = useState({
-		username: '',
-		email: '',
-		password: ''
+		credentials: {
+			username: '',
+			email: '',
+			password: ''
+		},
+		passwordCheck : false
 	});
 
 	const style = {
@@ -32,7 +36,7 @@ const LoginBusiness = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		axios
+		axiosWithAuth()
 			.post("https://replate-bw.herokuapp.com/api/login/business", login)
 			.then(response => {
 				console.log("response: ", response);
@@ -53,7 +57,7 @@ const LoginBusiness = () => {
 					<input
 						type="text"
 						name="username"
-						value={login.username}
+						value={login.credentials.username}
 						onChange={handleChange}
 						required
 					/>
@@ -64,7 +68,7 @@ const LoginBusiness = () => {
 						type="email"
 						pattern='^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'
 						name="email"
-						value={login.email}
+						value={login.credentials.email}
 						onChange={handleChange}
 						required
 					/>
@@ -74,9 +78,9 @@ const LoginBusiness = () => {
 					<input
 						type="password"
 						name="password"
-						value={login.password}
+						value={login.credentials.password}
 						onChange={handleChange}
-						// style={!this.state.passwordCheck ? this.style.Error : null}
+						style={!login.passwordCheck ? style.Error : null}
 						required
 					/>
 				</label>
