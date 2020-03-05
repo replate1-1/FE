@@ -19,6 +19,7 @@ import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import Login from './components/Login/Login';
 import Driver from './components/Driver/Driver';
+import Business from './components/Business/Business';
 import SignUp from './components/SignUp/SignUp';
 import SignUpDriver from './components/SignUp/SignUpDriver';
 import SignUpBusiness from './components/SignUp/SignUpBusiness';
@@ -69,15 +70,8 @@ function App() {
                 )} />
                 <Route exact path="/Login" component={Login} />
                 <Route exact path='/SignUp' component={SignUp} />
-
                 <PrivateRoute path='/Driver' component={Driver} />
-
-                {/*<PrivateRoute path='/Driver' component={Driver} />*/}
-                <Route
-                  path='/Driver'
-                  component={Driver}
-                  // render={() => (<Driver cookies={props.cookies} />)}
-                />
+                <PrivateRoute path='/Business' component={Business} />
               </div>
             </DriverContext.Provider>
           </BusinessContext.Provider>
