@@ -10,7 +10,7 @@ class LoginDriver extends Component {
 		credentials: { 
 			username: '',
 			email: '',
-			password: ''
+			password: '',
 		},
 		passwordCheck : true
 	}
@@ -57,7 +57,7 @@ class LoginDriver extends Component {
 		}
 		axios.post('https://replate-bw.herokuapp.com/api/login/driver', {
 			username: this.state.credentials.username,
-			password: this.state.credentials.password
+			password: this.state.credentials.password,
 		})
 		.then(res => {
 			console.log(res);
@@ -68,6 +68,7 @@ class LoginDriver extends Component {
 	}
 
 	render(){
+		console.log(this.context);
 		return (
 			<div className="login-form">
 				<form onSubmit={this.signIn}>
