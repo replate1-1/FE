@@ -1,0 +1,334 @@
+body {
+  margin: 0;
+  max-width: 1440px;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+  height: 50px;
+  background-color: #bd7e4d;
+}
+
+nav .menue {
+  color: #bd7e4d;
+}
+
+nav .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 5%;
+}
+
+nav .logo img {
+  height: 30px;
+  width: auto;
+}
+
+nav h1 {
+  font-family: "Oleo Script Swash Caps";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+  color: #F8F9F4;
+}
+
+.intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.intro .imgs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  padding: 5px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.intro .imgs img {
+  width: 85%;
+  height: auto;
+  margin: 15px;
+}
+
+.intro .imgs .extra {
+  display: none;
+}
+
+.sec1-d2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.sec1-d2 p {
+  font-family: "Delius Swash Caps";
+  font-weight: normal;
+  font-size: 42px;
+  text-align: center;
+  color: #466A66;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.about {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.about .sec2-d1 p {
+  font-family: "Cabin";
+  color: #466A66;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.about .sec2-d2 {
+  line-height: 24px;
+  background-color: #466A66;
+  color: #F8F9F4;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  padding-left: 15px;
+  padding-right: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.about .sec2-d2 .sec2-d2-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.about .sec2-d2 h2 {
+  font-family: "Delius Swash Caps";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.about .sec2-d2 p {
+  font-family: "Cabin";
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  padding-bottom: 15px;
+}
+
+.construction {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 30px;
+}
+
+.construction div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+}
+
+.construction div img {
+  height: 19px;
+}
+
+.construction div p {
+  text-align: center;
+  font-style: italic;
+  font-family: "Cabin";
+  color: #466A66;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.construction button {
+  width: 120px;
+  height: 40px;
+  background: #BD7E4D;
+  color: #F8F9F4;
+  border: 3px solid #BD7E4D;
+  border-radius: 5px;
+  font-style: normal;
+  font-family: "Cabin";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.construction .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 0%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 500px) {
+  .sec1-d2 p {
+    font-size: 24px;
+  }
+  /* .about{
+    flex-direction: column;
+
+}*/
+}
+
+@media (min-width: 600px) {
+  nav .logo {
+    margin-left: 2.5%;
+  }
+  .sec1-d2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .about {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+  .about .sec2-d1 {
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto 0%;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    padding-right: 30px;
+    width: 50%;
+  }
+  .about .sec2-d1 p {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto 0%;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  .construction {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .construction .sec3-d1 {
+    width: 557px;
+  }
+  .intro .imgs img {
+    width: 30%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .intro .imgs .extra {
+    display: block;
+  }
+}
+
+@media (min-width: 1000px) {
+  .about .sec2-d1 p {
+    font-size: 24px;
+    line-height: 35px;
+  }
+  .about .sec2-d2 h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .about .sec2-d2 p {
+    font-size: 24px;
+    line-height: 35px;
+  }
+}
+/*# sourceMappingURL=Marketing.css.map */
