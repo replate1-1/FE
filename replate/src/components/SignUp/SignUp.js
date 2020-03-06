@@ -13,8 +13,10 @@ class SignUp extends Component {
     render() {
         return (
             <div className='signup'>
-                <button onClick={() => this.setState({Driver: false, Business: !this.state.Business})}> Business </button>
-                <button onClick={() => this.setState({Driver: !this.state.Driver, Business: false})}> Driver </button>
+                <div>
+                    <button onClick={() => this.setState({Driver: false, Business: !this.state.Business})}> Business </button>
+                    <button onClick={() => this.setState({Driver: !this.state.Driver, Business: false})}> Driver </button>
+                </div>
                 {this.state.Business ? <SignUpBusiness props={this.props.history} /> : null}
                 {this.state.Driver ? <SignUpDriver props={this.props.history} /> : null}
             </div>

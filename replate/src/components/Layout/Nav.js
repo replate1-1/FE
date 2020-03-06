@@ -14,9 +14,9 @@ const Nav = () => {
             </div>
             {!nav ? <> </> : 
             <div className='links'>
-                <a onClick={() => history.push('/')}> Home </a>
-                <a onClick={() => history.push('/Login')}> Login </a>
-                <a onClick={() => history.push('/SignUp')}> SignUp </a>
+                <a onClick={() => {history.push('/'); setNav(!nav) } }> Home </a>
+                <a onClick={() => {history.push('/Login'); setNav(!nav)}}> Login </a>
+                <a onClick={() => {history.push('/SignUp'); setNav(!nav)}}> SignUp </a>
             </div>
             }
         </div>

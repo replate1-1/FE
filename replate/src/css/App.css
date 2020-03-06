@@ -5,6 +5,12 @@
 .App-container {
   margin: 2%;
 }
+
+.container {
+  width: 98%;
+  margin: 0 auto;
+}
+
 .header{
   display: flex;
   width: 100%;
@@ -98,6 +104,7 @@
 
 .involved > img {
   width: 70%;
+  object-fit: contain;
 }
 
 .involved > .list{
@@ -173,9 +180,6 @@
 
 .signup{
   width: 100%;
-}
-
-.container {
 }
 
 label::before, input::before {
@@ -262,7 +266,12 @@ input, select, textarea {
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
+  background: #BD7E4D;
+
+  /* Sch1/Accent/Twine */
+  border: 3px solid #BD7E4D;
+  box-sizing: border-box;
+  border-radius: 5px;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -363,3 +372,53 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.signup > div > button {
+  background-color: #466A66;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 40px 52px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.signup > div{
+  display: flex;
+  justify-content: space-evenly
+}
+
+.signup > div > button:hover {
+  background-color: #466A66;
+  opacity: .6;
+}
+
+.business-home button {
+  background-color: #466A66;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.business-home button:hover {
+  background-color: #466A66;
+  opacity: .6;
+}
+
+.business-home button#active {
+  background-color: #466A66;
+  opacity: .6;
+}
+
+.business-home > div{
+  display: flex;
+  justify-content: space-evenly;
+}
+
