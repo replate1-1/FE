@@ -32,8 +32,8 @@ function App() {
   return (
 
     <div>
-      <Header />
       <Router>
+      <Header />
          <BusinessContext.Provider value={{ business, setBusiness }}>
             <DriverContext.Provider value={{ driver, setDriver }}>
               <div className='App'>
