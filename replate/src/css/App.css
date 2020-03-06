@@ -1,6 +1,6 @@
 .App {
   font-family: Delius Swash Caps, serif;
-  min-height: calc(90vh - 20px - 4.4vh);
+  min-height: calc(var(--vh, 90vh) - 20px - var(--vh, 4.4vh));
 }
 .App-container {
   margin: 2%;
@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   font-family: Oleo Script Swash Caps, serif;
-  min-height: 10vh;
+  min-height: var(--vh, 10vh);
   margin-bottom: 20px;
 }
 
@@ -40,6 +40,11 @@
   margin: 0 auto;
 }
 
+.main-body > div > img {
+  height: auto;
+  object-fit: contain;
+}
+
 .main-body > div:first-child {
   display: flex;
   width: 100%;
@@ -56,7 +61,7 @@
   font-size: 24px;
   width: 100%;
   text-align: center;
-  margin: 1vh 0;
+  margin: var(--vh, 1vh) 0;
 }
 
 .main-body .cabin {
@@ -205,7 +210,7 @@ label::before, input::before {
 .change {
   position: absolute;
   right: 20px;
-  top: 3vh;
+  top: var(--vh, 3vh);
   cursor: pointer;
   z-index: 1001;
   font-family: Cabin;
@@ -229,7 +234,7 @@ label::before, input::before {
   top: 0;
   z-index: 1000;
   width: 100%;
-  padding-top: 48vh;
+  padding-top: var(--vh, 48vh);
   height: 100vh;
   font-size: 32px;
   font-family: Cabin;

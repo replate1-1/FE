@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // IMPORT ASSETS
@@ -28,6 +28,14 @@ function App() {
 
   const [business, setBusiness]     = useState(false);
   const [driver, setDriver]         = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('resize', () =>{
+      let vh = window.innerHeight * .01;
+      document.documentElement.style.setProperty('--vh',
+       `${vh}px`);
+    })
+  }, [])
   
   return (
 
