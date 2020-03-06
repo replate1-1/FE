@@ -6,10 +6,11 @@ import {useParams} from "react-router";
 
 const Driver = () => {
 
-    const {username} = useParams();
-    console.log("?: ", username);
+    const {id} = useParams();
+    console.log("?: ", id);
 
     const [pickUp, setPickUp] = useState([]);
+    const [location, setLocation] = useState([]);
     const [schedule, setSchedule] = useState([]);
 
     useEffect(() => {
@@ -23,9 +24,9 @@ const Driver = () => {
               console.log("What's the hold up? ", error)
           });
         axiosWithAuth()
-          .get(`/api/user/driver/${username}`)
+          .get(`/api/businesses`)
           .then(response => {
-              console.log("Driver: ", response)
+              console.log("Business: ", response)
           })
           .catch(error => {
               console.log("What's the matter? ", error)
