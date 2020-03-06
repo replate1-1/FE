@@ -38,9 +38,8 @@ function App() {
   }, [])
   
   return (
-
-    <div>
       <Router>
+      <div className='wrapper'>
       <Header />
          <BusinessContext.Provider value={{ business, setBusiness }}>
             <DriverContext.Provider value={{ driver, setDriver }}>
@@ -83,9 +82,10 @@ function App() {
               </div>
             </DriverContext.Provider>
           </BusinessContext.Provider>
+          </div>
+          <div class="push"></div>
+        <Footer />
       </Router>
-      <Footer />
-    </div>
   );
 }
 

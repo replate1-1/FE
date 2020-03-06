@@ -24,8 +24,8 @@ const Login = (props) => {
     return (
         <div className="container">
             <h1>I'm enrolled or interested in...</h1>
-            <Button onClick={handleClickBusiness}>Food Pickup</Button>
-            <Button onClick={handleClickDriver}>Driving</Button>
+            <Button id={business ? 'active' : ''} onClick={handleClickBusiness}>Food Pickup</Button>
+            <Button id={driver ? 'active' : ''} onClick={handleClickDriver}>Driving</Button>
             <Button onClick={() => {}}>Serving</Button>
             {driver ? (
               <LoginDriver props={props.history}/>
