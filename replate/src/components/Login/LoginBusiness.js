@@ -11,6 +11,8 @@ const LoginBusiness = () => {
 
 	let history = useHistory();
 
+	const [business, setBusiness] = useContext(BusinessContext);
+
 	const [ login, setLogin ] = useState({
 		username: '',
 		email: '',
@@ -39,8 +41,9 @@ const LoginBusiness = () => {
 			.then(response => {
 				console.log("response: ", response);
 				setLogin(login);
+				setBusiness(response.data);
 				sessionStorage.setItem('token', response.data.token);
-				history.push("/Business");
+				history.push(`/business/${login.username}`);
 			})
 			.catch(error => {
 				sessionStorage.removeItem("token");

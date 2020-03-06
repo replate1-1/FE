@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Location from '../Location/Location';
-import { Button } from "evergreen-ui";
 import {axiosWithAuth} from '../../utilities/axiosWithAuth';
+import BusinessForm from './BusinessForm';
 
 class Business extends Component{
 
@@ -11,16 +11,24 @@ class Business extends Component{
             amount: '',
             description: '',
             pickupTime: '',
+            lat: '',
+            lng: '',
         },
-        showPickup: false
+        showPickup: false,
+        user: ''
     }
 
     componentDidMount(){
-
-    }
-
-    componentWillUnmount(){
-        //localStorage.removeItem('token');
+        const { match: { params } } = this.props;
+        axiosWithAuth().get(`/api/user/driver/${params.userID}`)
+        .then(res => {
+            this.setState({
+                ...this.state,
+                user: res.data
+            })
+            console.log(this.state);
+        })
+        .catch(err => console.log(err));
     }
 
     handleChangePickup = e =>{
@@ -42,20 +50,30 @@ class Business extends Component{
 
     submitPickup = e =>{
         e.preventDefault();
+        console.log(this.state);
         let dateControl = document.querySelector('input[type="date"]');
         let timeControl = document.querySelector('input[type="time"]');
-
-        let dateTime = `${dateControl.value}/${timeControl.value}`;
-
+        let dateTime = dateControl.value.concat(timeControl.value);
+        console.log(dateTime);
         axiosWithAuth()
         .post('/api/pickups', {
-            food: this.state.pickup.food,
-            amount: this.state.pickup.amount,
-            description: this.state.pickup.description,
+            ...this.state.pickup,
             pickupTime: dateTime
         })
         .then(res => {
             console.log(res);
+            this.setState({
+                ...this.state,
+                pickup: {
+                    food: '',
+                    amount: '',
+                    description: '',
+                    pickupTime: '',
+                    lat: '',
+                    lng: '',
+                },
+                showPickup: false
+            })
         })
         .catch(err => console.log(err));
         
@@ -63,52 +81,20 @@ class Business extends Component{
     }
 
     render(){
-        console.log(this.context);
         return (
             <div className="container">
+                Hi {this.state.user.name}
                 <div className="business-home">
                 <button onClick={this.togglePickup}> {!this.state.showPickup ? <> Create Pickup </> : <> Hide Pickup </>} </button>
-                        { !this.state.showPickup ? <> </> : <form onSubmit={this.submitPickup}>
-                            <label> Food: </label>
-                            <input 
-                                type="text"
-                                name="food"
-                                value={this.state.pickup.food}
-                                onChange={this.handleChangePickup}
-                                required
-                            />
-                            <label> amount: </label>
-                            <input 
-                                type="text"
-                                name="amount"
-                                value={this.state.pickup.amount}
-                                onChange={this.handleChangePickup}
-                                required
-                            />
-                            <label> description: </label>
-                            <input 
-                                type="text"
-                                name="description"
-                                value={this.state.pickup.description}
-                                onChange={this.handleChangePickup}
-                                required
-                            />
-                            <label> Date: </label>
-                            <input 
-                                type="date"
-                                name="pickupTime"
-                                required
-                            />
-                            <label> Time: </label>
-                            <input 
-                                type="time"
-                                name="pickupTime"
-                                step='600'
-                                required
-                            />
-                            <input type="submit" value='Submit' />
-                        </form>
-                        }
+                    { !this.state.showPickup ? 
+                    <> </> : 
+                    <BusinessForm 
+                    handleChangePickup={this.handleChangePickup} 
+                    submitPickup={this.submitPickup.bind(this)} 
+                    state={this.state} 
+                    setState={this.setState.bind(this)} 
+                    />
+                    }
                 </div>
             </div>
         )
