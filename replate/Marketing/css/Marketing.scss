@@ -1,0 +1,308 @@
+//variables
+$twine: #bd7e4d;
+$shark: #466A66;
+$springWood: #F8F9F4;
+$midGrey: #5D5E60;
+
+//mix-ins
+@mixin flex {
+    display: flex;
+    margin: auto 0%;
+  }
+  @mixin LRpad {
+    padding-left:15px ;
+    padding-right: 15px;
+  }
+
+
+
+//main stuff
+body{
+    margin: 0;
+    max-width: 1440px;
+    
+}
+nav{
+    @include flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 50px;
+    background-color: $twine;
+    .menue{
+        color: $twine;
+    }
+
+    .logo{
+        @include flex;
+        align-items: center;
+        margin-left: 5%;
+        img{
+            height: 30px;
+            width: auto;
+
+            
+        }
+    }
+    h1{
+        font-family: 'Oleo Script Swash Caps', ;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 33px;
+        color: $springWood;
+    }
+ 
+}
+
+.intro{
+    @include flex;
+    flex-direction: column;
+    .imgs{
+       // width: 100%;
+        img{
+            width: 85%;
+            height: auto;
+            margin: 15px;
+            
+        }
+        .extra{
+            display: none;
+        }
+        @include flex;
+        //border: 2px solid black;
+        padding: 5px;
+        justify-content: space-around;
+        
+        
+    }
+}
+.sec1-d2{
+     
+     @include flex;
+     justify-content: center;
+     @include LRpad;
+     p{
+        font-family: 'Delius Swash Caps', ;
+        font-weight: normal;
+        font-size: 42px;
+        //line-height: 53px;
+        text-align: center;
+        color: $shark;
+        margin-top: 0px;
+        margin-bottom: 15px;
+     }
+}
+.about{
+    
+    @include LRpad;
+    @include flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    .sec2-d1{
+        p{
+            font-family: 'Cabin', ;
+            color: $shark;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+    }
+    .sec2-d2{
+        line-height: 24px;
+        .sec2-d2-cont{
+            @include flex;
+             justify-content: center;
+             text-align: center;
+        }
+        h2{
+            font-family: 'Delius Swash Caps', ;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 30px;
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+        p{
+            font-family: 'Cabin', ;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            padding-bottom: 15px;
+        }
+        
+        background-color: $shark;
+        color: $springWood;
+        border-radius: 2px;
+        @include flex;
+        @include LRpad;
+        flex-direction: column;
+       
+    }
+    
+}
+
+
+.construction{
+    @include LRpad;
+    @include flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    div{
+        @include flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px ;
+        img{
+            height: 19px;
+            
+        }
+        p{
+
+            text-align: center;
+            font-style: italic;
+            font-family: 'Cabin', ;
+            color: $shark;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    button{
+        width: 120px;
+        height: 40px;
+        background: #BD7E4D;
+        color: $springWood;
+        border: 3px solid #BD7E4D;
+       // box-sizing: border-box;
+        border-radius: 5px;
+
+        font-style: normal;
+        font-family: 'Cabin', ;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        //display: flex;
+        align-items: center;
+        text-align: center;
+        
+        
+    
+    
+    }
+    .btn{
+        @include flex;
+    
+        justify-content: center;
+        margin:0 auto;
+        
+    }
+}
+
+@media (max-width: 500px){
+  
+
+
+
+
+
+    .sec1-d2{
+        
+        p{
+            font-size: 24px;
+        }
+   }
+  /* .about{
+    flex-direction: column;
+
+}*/
+}
+
+@media (min-width: 600px){
+    nav{
+        .logo{
+            margin-left: 2.5%;
+        }
+    }
+    .sec1-d2{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .about{
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 40px;
+        margin-bottom: 70px;
+        
+        .sec2-d1{
+            @include LRpad;
+            @include flex;
+            align-content: center;
+            padding-right: 30px;
+            width: 50%;
+
+            p{
+                @include flex;
+            align-content: center;
+            }
+        }
+        
+    }
+    .construction{
+        //@include flex;
+        //justify-content: center;
+        align-items: center;
+        
+
+        .sec3-d1{
+            width: 557px;  
+        }
+    }
+    .intro{
+
+        .imgs{
+
+            img{
+                width: 30%;
+                justify-content: space-between;
+            }
+            .extra{
+                display: block;
+            }
+        }
+
+    }
+}
+
+@media (min-width: 1000px){
+    
+    .about{
+        .sec2-d1{
+            p{
+                font-size: 24px;
+                line-height: 35px;
+            }
+        }
+        .sec2-d2{
+            h2{
+                font-size: 32px;
+line-height: 40px;
+            }
+            p{
+                font-size: 24px;
+line-height: 35px;
+            }
+        }
+    }
+    
+}
