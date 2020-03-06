@@ -39,11 +39,11 @@ const LoginBusiness = () => {
 			.then(response => {
 				console.log("response: ", response);
 				setLogin(login);
-				localStorage.setItem('token', response.data.token);
+				sessionStorage.setItem('token', response.data.token);
 				history.push("/Business");
 			})
 			.catch(error => {
-				localStorage.removeItem("token");
+				sessionStorage.removeItem("token");
 				console.log("invalid login: ", error);
 			});
 	};
