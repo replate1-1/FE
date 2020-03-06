@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Location from '../Location/Location';
 import {axiosWithAuth} from '../../utilities/axiosWithAuth';
 import BusinessForm from './BusinessForm';
+import { withRouter } from "react-router-dom";
+
 
 class Business extends Component{
-
+    
     state = {
         pickup: {
             food: '',
@@ -20,7 +22,7 @@ class Business extends Component{
 
     componentDidMount(){
         const { match: { params } } = this.props;
-        axiosWithAuth().get(`/api/user/driver/${params.userID}`)
+        axiosWithAuth().get(`/api/user/business/${params.userID}`)
         .then(res => {
             this.setState({
                 ...this.state,
@@ -46,6 +48,16 @@ class Business extends Component{
             ...this.state,
             showPickup: !this.state.showPickup
         })
+    }
+
+    deleteAccount = e =>{
+        const { match: { params } } = this.props;
+        axiosWithAuth().delete(`/api/business/${params.userID}`)
+        .then(res =>{
+            console.log(res);
+            this.props.history.push('/');
+        })
+        .catch(err => console.log(err));
     }
 
     submitPickup = e =>{
@@ -85,8 +97,11 @@ class Business extends Component{
             <div className="container">
                 Hi {this.state.user.name}
                 <div className="business-home">
-                <button onClick={this.togglePickup}> {!this.state.showPickup ? <> Create Pickup </> : <> Hide Pickup </>} </button>
-                    { !this.state.showPickup ? 
+                <div>
+                    <button id={this.state.showPickup ? 'active' : ''} onClick={this.togglePickup}> {!this.state.showPickup ? <> Create Pickup </> : <> Hide Pickup </>} </button>
+                    <button onClick={this.deleteAccount}> Delete Account</button>
+                </div>    
+                { !this.state.showPickup ? 
                     <> </> : 
                     <BusinessForm 
                     handleChangePickup={this.handleChangePickup} 
@@ -96,6 +111,7 @@ class Business extends Component{
                     />
                     }
                 </div>
+
             </div>
         )
     }

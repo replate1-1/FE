@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // IMPORT ASSETS
 import './css/App.css';
-import mainPhotoLeft from './imgs/MainPhotoLeft.png';
-import mainPhotoRight from './imgs/MainPhotoRight.png';
-import foodKitchen from './imgs/FoodKitchen.png';
+import mainPhotoLeft from './imgs/Soup1.jpg';
+import mainPhotoRight from './imgs/Soup2.jpg';
+import foodKitchen from './imgs/Soup3.jpg';
 
 // IMPORT UTILITIES
 import PrivateRoute from './utilities/PrivateRoute';
