@@ -5,7 +5,7 @@ export const axiosWithAuth = () =>{
         baseURL: 'https://replate-bw.herokuapp.com/',
 
         headers: {
-            Authorization: localStorage.getItem('token')
+            Authorization: sessionStorage.getItem('token')
         }
     })
 }

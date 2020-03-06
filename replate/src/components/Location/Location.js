@@ -1,12 +1,9 @@
 /* global google */
 import React, { Component, createRef } from 'react';
-import {compose, withProps, lifecycle} from 'recompose';
+import {compose, withProps, withState, lifecycle} from 'recompose';
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer, } from 'react-google-maps';
-
-const center = {
-    lat: 42.897252,
-    lng: -77.274405
-};
+import {Car} from '../../imgs/Car.png';
+import PickUp from '../../imgs/Pickup.png';
 
 const dest = {
     lat: 42.883620, 
@@ -94,17 +91,22 @@ const MyMapComponent = compose(
         withGoogleMap,
         lifecycle({
             componentDidMount(){
+                console.log(this.props);
                 const DirectionsService = new google.maps.DirectionsService();
-
                 DirectionsService.route({
-                    origin: new google.maps.LatLng(center),
+                    origin: isNaN(this.props.state.lat) ? this.props.state[0] : new google.maps.LatLng(this.props.state[0]),
                     destination: new google.maps.LatLng(dest),
-                    travelMode: google.maps.TravelMode.DRIVING 
+                    travelMode: google.maps.TravelMode.DRIVING,
                 }, (result, status) => {
                     if(status === google.maps.DirectionsStatus.OK){
                         console.log(result);
+                        /*var leg = response.routes[0].legs[0];
+                        makeMarker(leg.start_location, Car, "title", map);
+                        makeMarker(leg.end_location, PickUp, 'title', map);*/
+                        this.props.setState(result.routes[0].overview_path)
                         this.setState({
                           directions: result,
+                          center: result.routes[0].overview_path[0]
                         });
                       } else {
                         console.error(`error fetching directions ${result}`);
@@ -116,7 +118,7 @@ const MyMapComponent = compose(
         <div>
             <GoogleMap
                 defaultZoom={10}
-                defaultCenter={center}
+                defaultCenter={props.center}
                 options={{ styles: mapStyles, disableDefaultUI: true }}
             >
                 {props.directions && <DirectionsRenderer directions={props.directions} />}
@@ -124,32 +126,36 @@ const MyMapComponent = compose(
         </div> 
 )
 
-class myMap extends React.PureComponent {
+class myMap extends React.Component {
     state = {
         isMarkerShown: false,
+        center: this.props.points[0],
+        points: [],
+        time: Date.now(),
+        prev: ''
     }
 
-    componentDidMount() {
-        this.delayedShowMarker()
-      }
-    
-      delayedShowMarker = () => {
-        setTimeout(() => {
-          this.setState({ isMarkerShown: true })
-        }, 3000)
-      }
-    
-      handleMarkerClick = () => {
-        this.setState({ isMarkerShown: false })
-        this.delayedShowMarker()
-      }
+    delayedShowMarker = () => {
+      setTimeout(() => {
+        this.setState({ isMarkerShown: true })
+      }, 3000)
+    }
+  
+    handleMarkerClick = () => {
+      this.setState({ isMarkerShown: false })
+      this.delayedShowMarker()
+    }
     
       render() {
         return (
+          <>
           <MyMapComponent
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
+            state={this.props.points}
+            setState={this.props.setPoints.bind(this)}
           />
+          </>
         )
       }
 }

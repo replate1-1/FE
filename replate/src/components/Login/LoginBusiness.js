@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { TextInput, Button, Label } from "evergreen-ui";
@@ -10,6 +10,8 @@ import {axiosWithAuth} from "../../utilities/axiosWithAuth";
 const LoginBusiness = () => {
 
 	let history = useHistory();
+
+	const [business, setBusiness] = useContext(BusinessContext);
 
 	const [ login, setLogin ] = useState({
 		username: '',
@@ -39,8 +41,9 @@ const LoginBusiness = () => {
 			.then(response => {
 				console.log("response: ", response);
 				setLogin(login);
-				localStorage.setItem('token', response.data.token);
-				history.push("/Business");
+				setBusiness(response.data);
+				sessionStorage.setItem('token', response.data.token);
+				history.push(`/business/${login.username}`);
 			})
 			.catch(error => {
 				localStorage.removeItem("token");

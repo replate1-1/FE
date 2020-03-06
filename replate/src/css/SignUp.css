@@ -33,3 +33,61 @@ input[type=submit] {
 input.checkbox {
     width: auto;
 }
+
+.pickup {
+    display: flex;
+    width: 98%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.top { 
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.top > div {
+    width: 48%;
+}
+.top > div > label {
+    font-family: Cabin;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: justify;
+}
+
+.top > div > input {
+    background: #D8E4E1;
+
+    /* Sch1/Neutrals/MidGray */
+    border: 1px solid #5D5E60;
+    box-sizing: border-box;
+}
+
+.pickup > form > label {
+    font-family: Cabin;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: justify;
+}
+
+.pickup > form > input {
+    background: #D8E4E1;
+
+    /* Sch1/Neutrals/MidGray */
+    border: 1px solid #5D5E60;
+    box-sizing: border-box;
+}
+
+.pickup > form > input[type=submit]{
+    background: #BD7E4D;
+
+    /* Sch1/Accent/Twine */
+    border: 3px solid #BD7E4D;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
