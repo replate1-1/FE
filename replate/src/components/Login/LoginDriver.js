@@ -61,8 +61,8 @@ class LoginDriver extends Component {
 		})
 		.then(res => {
 			console.log(res);
-			localStorage.setItem('token', res.data.token);
-			this.props.props.push('/Driver');
+			sessionStorage.setItem('token', res.data.token);
+			this.props.props.push(`/Driver/${this.state.credentials.username}`);
 		})
 		.catch(err => console.log(err));
 	}

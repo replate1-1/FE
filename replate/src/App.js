@@ -70,8 +70,8 @@ function App() {
                 )} />
                 <Route exact path="/Login" component={Login} />
                 <Route exact path='/SignUp' component={SignUp} />
-                <PrivateRoute path='/Driver' component={Driver} />
-                <PrivateRoute path='/Business' component={Business} />
+                <PrivateRoute path='/Driver/:userID' component={Driver} />
+                <PrivateRoute path='/Business/:userID' component={Business} />
               </div>
             </DriverContext.Provider>
           </BusinessContext.Provider>

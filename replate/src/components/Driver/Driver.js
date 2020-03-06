@@ -12,7 +12,27 @@ const Driver = () => {
     const [pickUp, setPickUp] = useState([]);
     const [location, setLocation] = useState([]);
     const [schedule, setSchedule] = useState([]);
+    const [points, setPoints] = useState([{ lat: 42.897252, lng: -77.274405 }]);
+    const [time, setTime] = useState(Date.now());
+    const [key, setKey] = useState(0);
 
+    useEffect(() => {
+    const interval = setInterval(() =>{ 
+        if(points.length > 1){
+            let pointsnew = points;
+            pointsnew.shift();
+            console.log(points);
+            setPoints(pointsnew);
+            setKey(key + 1);
+            setTime(Date.now())  
+        } else {
+            setTime(Date.now())
+        }
+    }, 5000);
+    return () => {
+        clearInterval(interval);
+    };
+    }, [points]);
     useEffect(() => {
         axiosWithAuth()
           .get('/api/pickups')
@@ -40,11 +60,11 @@ const Driver = () => {
     return (
         <div className="container">
             <div className="business-home">
-                <h2>Hello {}</h2>
+                <h2>Hello </h2>
                 <section className="section-container">
                     <div className="content content-map">
                         <div className="map-content">
-                            <Location />
+                            <Location key={key} points={points} setPoints={setPoints.bind(this)} />
                         </div>
                         <div className="map-actions">
                             <ul>
