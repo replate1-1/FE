@@ -97,6 +97,8 @@ class SignUpDriver extends Component {
                     <input
                         type='password'
                         name='password'
+                        pattern=".{6,}"
+                        title='password must be atleast 6 characters long'
                         id='password'
                         value={this.state.credentials.password}
                         onChange={this.handleChange}
