@@ -38,7 +38,7 @@ const LoginBusiness = () => {
 				history.push(`/business/${login.username}`);
 			})
 			.catch(error => {
-				localStorage.removeItem("token");
+				sessionStorage.removeItem("token");
 				console.log("invalid login: ", error);
 			});
 	};
