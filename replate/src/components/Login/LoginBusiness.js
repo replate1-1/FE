@@ -1,10 +1,5 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
-import { TextInput, Button, Label } from "evergreen-ui";
-import * as yup from "yup";
-import {BusinessContext} from "../../contexts/BusinessContext";
-import {DriverContext} from "../../contexts/DriverContext";
 import {axiosWithAuth} from "../../utilities/axiosWithAuth";
 
 const LoginBusiness = () => {

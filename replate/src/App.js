@@ -21,8 +21,6 @@ import Login from './components/Login/Login';
 import Driver from './components/Driver/Driver';
 import Business from './components/Business/Business';
 import SignUp from './components/SignUp/SignUp';
-import SignUpDriver from './components/SignUp/SignUpDriver';
-import SignUpBusiness from './components/SignUp/SignUpBusiness';
 
 function App() {
 
@@ -83,7 +81,7 @@ function App() {
             </DriverContext.Provider>
           </BusinessContext.Provider>
           </div>
-          <div class="push"></div>
+          <div className="push"></div>
         <Footer />
       </Router>
   );

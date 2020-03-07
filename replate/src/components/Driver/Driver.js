@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, Button, Label } from "evergreen-ui";
+import { Button } from "evergreen-ui";
 import Location from '../Location/Location';
-import {axiosWithAuth} from "../../utilities/axiosWithAuth";
-import {useParams} from "react-router";
+import { axiosWithAuth } from "../../utilities/axiosWithAuth";
+import { useParams } from "react-router";
 
 const Driver = () => {
 
@@ -59,7 +59,7 @@ const Driver = () => {
 
     return (
         <div className="container">
-            <div className="business-home">
+            <div className="driver-home">
                 <h2>Hello </h2>
                 <section className="section-container">
                     <div className="content content-map">
