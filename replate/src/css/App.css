@@ -35,6 +35,11 @@
   margin: 0 auto;
 }
 
+.container {
+  width: 98%;
+  margin: 0 auto;
+}
+
 .main-body > div:first-child {
   display: flex;
   width: 100%;
@@ -42,8 +47,7 @@
 }
 
 .main-body > div > img{
-  height: auto;
-  object-fit: fill;
+  height: 100%;
   align-self: center;
 }
 
