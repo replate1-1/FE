@@ -4,10 +4,10 @@ import Location from '../Location/LocationDriver.js';
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { useParams } from "react-router";
 
-const Driver = () => {
+const Driver = props => {
 
-    const {id} = useParams();
-    console.log("?: ", id);
+    // const {id} = useParams();
+    // console.log("?: ", id);
 
     const [pickUp, setPickUp] = useState([]);
     const [location, setLocation] = useState([]);
@@ -15,6 +15,7 @@ const Driver = () => {
     const [points, setPoints] = useState([{ lat: 42.897252, lng: -77.274405 }]);
     const [time, setTime] = useState(Date.now());
     const [key, setKey] = useState(0);
+    const [user, setUser] = useState([]);
 
     useEffect(() => {
     const interval = setInterval(() =>{ 
@@ -34,10 +35,22 @@ const Driver = () => {
     };
     }, [points]);
     useEffect(() => {
+        const { match: { params } } = props;
+        console.log("Params: ", params);
+
+        axiosWithAuth()
+          .get(`/api/user/driver/${params.userID}`)
+          .then(response => {
+            console.log("User: ", response);
+            setUser(response.data)
+          })
+          .catch(error => {
+              console.log("What's the hold up? ", error)
+          });
         axiosWithAuth()
           .get('/api/pickups')
           .then(response => {
-              console.log("Response: ", response.data)
+              console.log("Pick Ups: ", response.data)
               setPickUp(response.data)
           })
           .catch(error => {
@@ -59,8 +72,8 @@ const Driver = () => {
 
     return (
         <div className="container">
-            <div className="driver-home">
-                <h2>Hello </h2>
+            <div className="business-home">
+                <h2>Hello  {user.username}!</h2>
                 <section className="section-container">
                     <div className="content content-map">
                         <div className="map-content">
