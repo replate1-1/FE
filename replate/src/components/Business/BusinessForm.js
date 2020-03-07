@@ -47,7 +47,7 @@ class BusinessForm extends Component {
                 <label> Amount: </label>
                 <input 
                     type="text"
-                    pattern='^[0-9]'
+                    pattern='^[0-9]*$'
                     name="amount"
                     value={this.props.state.pickup.amount}
                     onChange={this.props.handleChangePickup}

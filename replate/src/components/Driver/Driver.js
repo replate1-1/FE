@@ -4,7 +4,7 @@ import Location from '../Location/Location';
 import {axiosWithAuth} from "../../utilities/axiosWithAuth";
 import {useParams} from "react-router";
 
-const Driver = props => {
+const Driver = () => {
 
     // const {id} = useParams();
     // console.log("?: ", id);

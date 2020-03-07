@@ -1,6 +1,5 @@
 import React, {useContext } from 'react';
 import {Button} from "evergreen-ui";
-import * as yup from "yup";
 import {BusinessContext} from "../../contexts/BusinessContext";
 import {DriverContext} from "../../contexts/DriverContext";
 import LoginBusiness from "./LoginBusiness";
@@ -23,9 +22,9 @@ const Login = (props) => {
     
     return (
         <div className="container">
-            <h1>I'm enrolled or interested in...</h1>
-            <Button onClick={handleClickBusiness}>Food Pickup</Button>
-            <Button onClick={handleClickDriver}>Driving</Button>
+            <h1>I'm enrolled or interested in{business ? <> Business</> : driver ? <> Driver</> : <>..</>}.</h1>
+            <Button id={business ? 'active' : ''} onClick={handleClickBusiness}>Business</Button>
+            <Button id={driver ? 'active' : ''} onClick={handleClickDriver}>Driving</Button>
             <Button onClick={() => {}}>Serving</Button>
             {driver ? (
               <LoginDriver props={props.history}/>

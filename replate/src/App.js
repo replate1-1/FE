@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // IMPORT ASSETS
 import './css/App.css';
-import mainPhotoLeft from './imgs/MainPhotoLeft.png';
-import mainPhotoRight from './imgs/MainPhotoRight.png';
-import foodKitchen from './imgs/FoodKitchen.png';
+import mainPhotoLeft from './imgs/Soup1.jpg';
+import mainPhotoRight from './imgs/Soup2.jpg';
+import foodKitchen from './imgs/Soup3.jpg';
 
 // IMPORT UTILITIES
 import PrivateRoute from './utilities/PrivateRoute';
@@ -21,18 +21,23 @@ import Login from './components/Login/Login';
 import Driver from './components/Driver/Driver';
 import Business from './components/Business/Business';
 import SignUp from './components/SignUp/SignUp';
-import SignUpDriver from './components/SignUp/SignUpDriver';
-import SignUpBusiness from './components/SignUp/SignUpBusiness';
 
 function App() {
 
   const [business, setBusiness]     = useState(false);
   const [driver, setDriver]         = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('resize', () =>{
+      let vh = window.innerHeight * .01;
+      document.documentElement.style.setProperty('--vh',
+       `${vh}px`);
+    })
+  }, [])
   
   return (
-
-    <div>
       <Router>
+      <div className='wrapper'>
       <Header />
          <BusinessContext.Provider value={{ business, setBusiness }}>
             <DriverContext.Provider value={{ driver, setDriver }}>
@@ -75,9 +80,10 @@ function App() {
               </div>
             </DriverContext.Provider>
           </BusinessContext.Provider>
+          </div>
+          <div className="push"></div>
+        <Footer />
       </Router>
-      <Footer />
-    </div>
   );
 }
 

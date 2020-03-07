@@ -3,8 +3,9 @@ import Location from '../Location/Location';
 import {axiosWithAuth} from '../../utilities/axiosWithAuth';
 import BusinessForm from './BusinessForm';
 
-class Business extends Component{
 
+class Business extends Component{
+    
     state = {
         pickup: {
             food: '',
@@ -15,18 +16,26 @@ class Business extends Component{
             lng: '',
         },
         showPickup: false,
-        user: ''
+        user: '',
+        allPickups: [],
     }
 
     componentDidMount(){
         const { match: { params } } = this.props;
-        axiosWithAuth().get(`/api/user/driver/${params.userID}`)
+        axiosWithAuth().get(`/api/user/business/${params.userID}`)
         .then(res => {
             this.setState({
                 ...this.state,
                 user: res.data
             })
-            console.log(this.state);
+            axiosWithAuth().get(`/api/pickups/${params.userID}`)
+            .then(res => {
+                this.setState({
+                    ...this.state,
+                    allPickups: res.data
+                })
+            })
+            .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
     }
@@ -48,6 +57,16 @@ class Business extends Component{
         })
     }
 
+    deleteAccount = e =>{
+        axiosWithAuth()
+        .delete(`/api/user/business/${this.state.user.username}`)
+        .then(res =>{
+            console.log(res);
+            this.props.history.push('/');
+        })
+        .catch(err => console.log(err));
+    }
+
     submitPickup = e =>{
         e.preventDefault();
         console.log(this.state);
@@ -55,8 +74,12 @@ class Business extends Component{
         let timeControl = document.querySelector('input[type="time"]');
         let dateTime = dateControl.value.concat(timeControl.value);
         console.log(dateTime);
+        console.log({
+            ...this.state.pickup,
+            pickupTime: dateTime
+        })
         axiosWithAuth()
-        .post('/api/pickups', {
+        .post(`/api/pickups/${this.state.user.username}`, {
             ...this.state.pickup,
             pickupTime: dateTime
         })
@@ -83,10 +106,13 @@ class Business extends Component{
     render(){
         return (
             <div className="container">
-                Hi {this.state.user.name}
+                Hi {this.state.user.username}
                 <div className="business-home">
-                <button onClick={this.togglePickup}> {!this.state.showPickup ? <> Create Pickup </> : <> Hide Pickup </>} </button>
-                    { !this.state.showPickup ? 
+                <div>
+                    <button id={this.state.showPickup ? 'active' : ''} onClick={this.togglePickup}> {!this.state.showPickup ? <> Create Pickup </> : <> Hide Pickup </>} </button>
+                    <button onClick={this.deleteAccount}> Delete Account</button>
+                </div>    
+                { !this.state.showPickup ? 
                     <> </> : 
                     <BusinessForm 
                     handleChangePickup={this.handleChangePickup} 
@@ -94,8 +120,12 @@ class Business extends Component{
                     state={this.state} 
                     setState={this.setState.bind(this)} 
                     />
-                    }
+                }
+                <div className='pickups'>
+                    
                 </div>
+                </div>
+
             </div>
         )
     }

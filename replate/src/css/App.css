@@ -1,6 +1,6 @@
 .App {
   font-family: Delius Swash Caps, serif;
-  min-height: calc(90vh - 20px - 4.4vh);
+  height: 100%;
 }
 .App-container {
   margin: 2%;
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   font-family: Oleo Script Swash Caps, serif;
-  min-height: 10vh;
+  min-height: 10%;
   margin-bottom: 20px;
 }
 
@@ -25,6 +25,7 @@
 .header > h1 {
   display: inline;
   margin-left: 2%;
+  margin-right: 30px;
 }
 
 .main-body {
@@ -34,10 +35,20 @@
   margin: 0 auto;
 }
 
+.container {
+  width: 98%;
+  margin: 0 auto;
+}
+
 .main-body > div:first-child {
   display: flex;
   width: 100%;
   justify-content: space-around;
+}
+
+.main-body > div > img{
+  height: 100%;
+  align-self: center;
 }
 
 .main-body > div:first-child > * {
@@ -50,7 +61,7 @@
   font-size: 24px;
   width: 100%;
   text-align: center;
-  margin: 1vh 0;
+  margin: 1% 0;
 }
 
 .main-body .cabin {
@@ -98,6 +109,7 @@
 
 .involved > img {
   width: 70%;
+  align-self: center;
 }
 
 .involved > .list{
@@ -110,6 +122,7 @@
 }
 
 .involved > .list > div {
+  align-self: center;
   text-align: center;
   margin-bottom: 20px;
   border: 5px solid #466A66;
@@ -175,8 +188,6 @@
   width: 100%;
 }
 
-.container {
-}
 
 label::before, input::before {
   content: "\A";
@@ -186,7 +197,7 @@ label::before, input::before {
 .container-buttons {
   position: absolute;
   right: 20px;
-  top: 3vh;
+  top: 2%;
   cursor: pointer;
 }
 
@@ -201,7 +212,7 @@ label::before, input::before {
 .change {
   position: absolute;
   right: 20px;
-  top: 3vh;
+  top: 2%;
   cursor: pointer;
   z-index: 1001;
   font-family: Cabin;
@@ -219,14 +230,19 @@ label::before, input::before {
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
+.container > button#active {
+  opacity: .7;
+  border: 1px solid gray;
+}
+
 .links {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 1000;
   width: 100%;
-  padding-top: 48vh;
-  height: 100vh;
+  padding-top: 50%;
+  height: 100%;
   font-size: 32px;
   font-family: Cabin;
   color: white;
@@ -261,16 +277,17 @@ input, select, textarea {
   box-sizing: border-box;
 }
 
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
+input[type="submit"] {
+  background: #bd7e4d;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color:#fff;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   float: left;
 }
-
 input.checkbox {
   width: auto;
 }
@@ -332,12 +349,72 @@ input.checkbox {
   box-sizing: border-box;
   border-radius: 5px;
 }
+
+.signup > div {
+  display: flex;
+  justify-content: space-evenly;
+}
+.signup > div > button {
+  background-color: #466a66;
+  border: none;
+  color:#fff;
+  cursor: pointer;
+  padding: 40px 52px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.signup > div{
+  display: flex;
+  justify-content: space-evenly
+}
+
+.signup > div > button:hover {
+  background-color: #466A66;
+  opacity: .6;
+}
+.signup > div > button#active {
+  background-color: #466A66;
+  opacity: .6;
+}
+
+.business-home > div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.business-home button {
+  background-color: #466a66;
+  border: none;
+  color:#fff;
+  cursor: pointer;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.business-home button:hover {
+  background-color: #466A66;
+  opacity: .6;
+}
+
+.business-home button#active {
+  background-color: #466A66;
+  opacity: .6;
+}
+
+.business-home > div{
+  display: flex;
+  justify-content: space-evenly;
+}
+
 div.footer {
-  position: sticky;
-  bottom: 0;
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 50px;
   font-family: Cabin;
   font-style: normal;
   font-weight: 600;
@@ -348,7 +425,23 @@ div.footer {
   text-align: center;
   background: #466A66;
   color: #F8F9F4;
-  min-height: 4.4vh;
+}
+
+.push{
+  height: 50px;
+}
+
+.wrapper{
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+#root{
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 body {
   margin: 0;
