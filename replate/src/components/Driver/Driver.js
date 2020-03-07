@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "evergreen-ui";
-import Location from '../Location/Location';
+import Location from '../Location/LocationDriver.js';
 import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { useParams } from "react-router";
 

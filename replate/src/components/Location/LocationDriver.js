@@ -5,9 +5,9 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer, } fr
 import {Car} from '../../imgs/Car.png';
 import PickUp from '../../imgs/Pickup.png';
 
-const origin = {
-    lat: 34.083841, 
-    lng: -118.344293 
+const dest = {
+    lat: 42.883620, 
+    lng: -77.277944 
 }
 
 const mapStyles= [ 
@@ -84,22 +84,25 @@ const MyMapComponent = compose(
         withProps({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyB4wJdNOQ1i66CdqV60zF-NxSo4xNnAuMs&callback=initMap",
             loadingElement: <div style={{ height: `100%` }} />,
-            containerElement: <div style={{ height: `600px` }} />,
-            mapElement: <div style={{ height: `100%`, borderRadius: '24px 0px 0px px' } } />,
+            containerElement: <div style={{ height: `800px` }} />,
+            mapElement: <div style={{ height: `100%` }} />,
         }),
         withScriptjs,
         withGoogleMap,
-        /*lifecycle({
+        lifecycle({
             componentDidMount(){
-                if(this.props.directions === true){
-                  const DirectionsService = new google.maps.DirectionsService();
-                  DirectionsService.route({
+                console.log(this.props);
+                const DirectionsService = new google.maps.DirectionsService();
+                DirectionsService.route({
                     origin: isNaN(this.props.state.lat) ? this.props.state[0] : new google.maps.LatLng(this.props.state[0]),
-                    destination: new google.maps.LatLng(this.props.state.car),
+                    destination: new google.maps.LatLng(dest),
                     travelMode: google.maps.TravelMode.DRIVING,
-                  }, (result, status) => {
+                }, (result, status) => {
                     if(status === google.maps.DirectionsStatus.OK){
                         console.log(result);
+                        /*var leg = response.routes[0].legs[0];
+                        makeMarker(leg.start_location, Car, "title", map);
+                        makeMarker(leg.end_location, PickUp, 'title', map);*/
                         this.props.setState(result.routes[0].overview_path)
                         this.setState({
                           directions: result,
@@ -110,24 +113,26 @@ const MyMapComponent = compose(
                       }
                     });
                   }
-                } 
-              }
-            )*/
+            })
         )(props =>
         <div>
             <GoogleMap
-                defaultZoom={14}
-                defaultCenter={origin}
+                defaultZoom={10}
+                defaultCenter={props.center}
                 options={{ styles: mapStyles, disableDefaultUI: true }}
             >
-                {props.isMarkerShown && <Marker position={origin} />}
+                {props.directions && <DirectionsRenderer directions={props.directions} />}
             </GoogleMap>
         </div> 
 )
 
 class myMap extends React.Component {
     state = {
-        isMarkerShown: true,
+        isMarkerShown: false,
+        center: this.props.points[0],
+        points: [],
+        time: Date.now(),
+        prev: ''
     }
 
     delayedShowMarker = () => {
@@ -147,6 +152,8 @@ class myMap extends React.Component {
           <MyMapComponent
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
+            state={this.props.points}
+            setState={this.props.setPoints.bind(this)}
           />
           </>
         )

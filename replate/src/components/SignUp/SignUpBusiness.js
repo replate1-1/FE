@@ -109,6 +109,8 @@ class SignUpBusiness extends Component {
                         type='password'
                         name='password'
                         id='password'
+                        pattern=".{6,}"
+                        title='password must be atleast 6 characters long'
                         value={this.state.credentials.password}
                         onChange={this.handleChange}
                         onBlur={this.passwordCheck}

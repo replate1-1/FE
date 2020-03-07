@@ -23,6 +23,7 @@ class BusinessForm extends Component {
                         <input 
                             type="date"
                             name="pickupTime"
+                            min={new Date().toJSON().slice(0,10).replace(/-/g,'-')}
                             required
                         />
                     </div>
@@ -31,6 +32,7 @@ class BusinessForm extends Component {
                         <input 
                             type="time"
                             name="pickupTime"
+                            title='Please enter a time'
                             step='600'
                             required
                         />
@@ -40,16 +42,18 @@ class BusinessForm extends Component {
                 <input 
                     type="text"
                     name="food"
-                    value={this.props.state.pickup.food}
+                    title='Please enter a food'
+                    value={this.props.state.food}
                     onChange={this.props.handleChangePickup}
                     required
                 />
                 <label> Amount: </label>
                 <input 
                     type="text"
-                    pattern='^[0-9]*$'
+                    pattern='^[1-9]\d*$'
+                    title='Please enter an amount of food'
                     name="amount"
-                    value={this.props.state.pickup.amount}
+                    value={this.props.state.amount}
                     onChange={this.props.handleChangePickup}
                     required
                 />
@@ -57,7 +61,7 @@ class BusinessForm extends Component {
                 <input 
                     type="text"
                     name="description"
-                    value={this.props.state.pickup.description}
+                    value={this.props.state.description}
                     onChange={this.props.handleChangePickup}
                     required
                 />
@@ -66,7 +70,7 @@ class BusinessForm extends Component {
                     type="text"
                     pattern='[-+]?([0-9]*\.[0-9]+|[0-9]+)'
                     name="lat"
-                    value={this.props.state.pickup.lat}
+                    value={this.props.state.lat}
                     onChange={this.props.handleChangePickup}
                     required
                 />
@@ -75,7 +79,7 @@ class BusinessForm extends Component {
                     type="text"
                     pattern='[-+]?([0-9]*\.[0-9]+|[0-9]+).'
                     name="lng"
-                    value={this.props.state.pickup.lng}
+                    value={this.props.state.lng}
                     onChange={this.props.handleChangePickup}
                     required
                 />

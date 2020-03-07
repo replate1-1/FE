@@ -235,6 +235,11 @@ label::before, input::before {
   border: 1px solid gray;
 }
 
+.container > h1 {
+  text-align: center;
+  color:  #466A66;
+}
+
 .links {
   position: absolute;
   left: 0;
@@ -316,6 +321,11 @@ input.checkbox {
   text-align: justify;
 }
 
+.pickup input:focus{
+  background-color: rgb(143, 150, 148);
+  border: 1px solid rgb(43, 43, 44);
+}
+
 .top > div > input {
   background: #D8E4E1;
 
@@ -379,9 +389,105 @@ input.checkbox {
   opacity: .6;
 }
 
-.business-home > div {
+.business-home > div:first-child {
   display: flex;
   justify-content: space-evenly;
+}
+
+.accountContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.accountContainer > .pickups {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  background: #466A66;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.accountContainer > .pickups > h1{
+  text-indent: 1.6rem;
+}
+
+.accountContainer> .pickups > .pickup {
+  width: 100%;
+}
+
+.accountContainer .pickup{
+  background-color: #4D4D4D;
+  justify-content: space-between;
+  padding-left: 1.6rem;
+}
+
+.accountContainer  .pickup > span > button:first-child{
+  margin-right: 10px;
+}
+
+.editPickup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: gray;
+  opacity: .95;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.editPickup > .pickup {
+  position: relative;
+  width: 80%;
+  padding-right: 20px;
+  opacity: 1;
+}
+
+.bottom {
+  width: 100%;
+  height: 5vh;
+  background-color:#466A66;
+  border-radius: 0px 0px 24px 24px;
+  margin-bottom: 50px;
+}
+
+.businessContain {
+  margin-top: 10px;
+  width: 100%;
+  overflow-x: hidden;
+  min-width: 340px;
+}
+
+.businessContain > .map {
+  width: 90%;
+  position: relative;
+  float: left;
+  border-radius: 24px 0px 0px 0px;
+}
+.businessContain > .map > div > div {
+  border-radius: 24px 0px 0px 0px;
+}
+.businessContain > .profile {
+  position: relative;
+  float: right;
+  right: 0%;
+  width: 10%;
+  min-width: 34px;
+  height: 600px;
+  background-color: #466A66;
+  border-radius: 0px 24px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profile > img{
+  align-self: center;
 }
 
 .business-home button {
@@ -403,11 +509,6 @@ input.checkbox {
 .business-home button#active {
   background-color: #466A66;
   opacity: .6;
-}
-
-.business-home > div{
-  display: flex;
-  justify-content: space-evenly;
 }
 
 div.footer {
@@ -435,6 +536,7 @@ div.footer {
   min-height: 100%;
   margin-bottom: -50px;
 }
+
 #root{
   height: 100%;
 }
