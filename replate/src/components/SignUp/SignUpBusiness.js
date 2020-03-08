@@ -81,13 +81,12 @@ class SignUpBusiness extends Component {
                 businessName: this.state.credentials.businessName,
                 businessAddress: this.state.credentials.businessAddress,
                 phoneNumber: this.state.credentials.phoneNumber
-            }
-            )
-                .then(res =>{
-                    console.log(res);
-                    this.props.props.push('/Login');
-                })
-                .catch(err => console.log(err));
+            })
+            .then(res =>{
+                console.log(res);
+                this.props.props.push('/Login');
+            })
+            .catch(err => console.log(err));
         }
     };
 

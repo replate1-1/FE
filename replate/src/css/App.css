@@ -490,6 +490,58 @@ input.checkbox {
   align-self: center;
 }
 
+.content-map{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.content > .pickups{
+  background-color: #466A66;
+  width: 100%;
+  text-indent: 1.6rem;
+  color:white;
+}
+
+.content-map > .pickups > .pickup {
+  width: 100%;
+  background-color: #4D4D4D;
+  justify-content: space-between;
+  text-indent: 0;
+}
+
+.acceptedPickups{
+  width: 100%;
+  background-color: #466A66;
+  color: white;
+  text-indent: 1.6rem;
+
+}
+
+.pickups > .pickup {
+  text-indent: 0;
+  background-color: #4D4D4D;
+  width: 100%;
+  justify-content: space-between;
+  text-indent: 1.6rem;
+}
+
+.pickups > .pickup > span > button {
+  background-color: #466a66;
+  border: none;
+  color:#fff;
+  cursor: pointer;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.content-map > .pickups > .pickup > h1:first-child {
+  text-indent: 1.6rem;
+}
+
 .business-home button {
   background-color: #466a66;
   border: none;
@@ -509,6 +561,14 @@ input.checkbox {
 .business-home button#active {
   background-color: #466A66;
   opacity: .6;
+}
+
+.driver-home > h1{
+  text-align: center;
+}
+
+.content > .pickups {
+  background-color: #466A66;
 }
 
 div.footer {
@@ -557,4 +617,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) { 
+  .pickups > .pickup {
+    text-indent: 0;
+    background-color: #4D4D4D;
+    width: 100%;
+    font-size: 12px;
+    justify-content: space-between;
+    text-indent: 1.6rem;
+  }
 }

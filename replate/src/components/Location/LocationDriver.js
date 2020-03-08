@@ -84,8 +84,8 @@ const MyMapComponent = compose(
         withProps({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyB4wJdNOQ1i66CdqV60zF-NxSo4xNnAuMs&callback=initMap",
             loadingElement: <div style={{ height: `100%` }} />,
-            containerElement: <div style={{ height: `800px` }} />,
-            mapElement: <div style={{ height: `100%` }} />,
+            containerElement: <div style={{ height: `600px` }} />,
+            mapElement: <div style={{ height: `100%`, borderRadius: '24px 0px 0px px' }} />,
         }),
         withScriptjs,
         withGoogleMap,
