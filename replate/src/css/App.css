@@ -566,6 +566,7 @@ input.checkbox {
 .driver-home > h1{
   text-align: center;
 }
+
 .content > .pickups {
   background-color: #466A66;
 }
@@ -616,4 +617,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) { 
+  .pickups > .pickup {
+    text-indent: 0;
+    background-color: #4D4D4D;
+    width: 100%;
+    font-size: 12px;
+    justify-content: space-between;
+    text-indent: 1.6rem;
+  }
 }

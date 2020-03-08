@@ -21,6 +21,7 @@ const Driver = props => {
     const [time, setTime] = useState(Date.now());
     const [key, setKey] = useState(0);
     const [user, setUser] = useState([]);
+    const [forceUpdate, setForceUpdate] = useState(0); 
 
     useEffect(() => {
     const interval = setInterval(() =>{ 
@@ -85,21 +86,52 @@ const Driver = props => {
         })
         .then(res =>{
             console.log(res);
+            axiosWithAuth().get(`/api/pickups/driver/${user.id}`)
+            .then(res => {
+                  console.log('my pickups', res.data);
+                  setMyPickups(res.data);
+                  axiosWithAuth().delete(`/api/pickups/${location.id}`)
+                  .then(res => {
+                      axiosWithAuth().get(`/api/pickups`)
+                      .then(res =>{
+                          setPickUp(res.data)
+                      })
+                      .catch(err => console.log(err))
+                  })
+                  .catch(err => console.log(err));
+            })
+            .catch(err => {
+                console.log(err);
+            })
         })
         .catch(err => console.log(err));
+        setForceUpdate(forceUpdate+1);
         setSchedule([...schedule, location])
     };
 
     const removePickup = pickup =>{
-        axiosWithAuth().delete(`/api/pickups/${pickUp.id}`)
+        axiosWithAuth().delete(`/api/pickups/driver/${pickup.id}`)
         .then(res =>{
-            axiosWithAuth().post(`/api/pickups/${pickUp.businessUsername}`)
+            axiosWithAuth().post(`/api/pickups/${pickup.businessUsername}`,
+                pickup
+            )
             .then(res =>{
-                console.log(res);
+                axiosWithAuth().get(`/api/pickups`)
+                    .then(res =>{
+                    setPickUp(res.data);
+                    axiosWithAuth().get(`/api/pickups/driver/${user.id}`)
+                        .then(res =>{
+                            setMyPickups(res.data);
+                        })
+                        .catch(err => console.log('1 ',err));
+                    })
+                    .catch(err => console.log('2', err));
+                })
+                .catch(err =>console.log('3', err));
             })
-        })
-        .catch(err => console.log(err));
-    }
+            .catch(err=>console.log('4', err));
+            setForceUpdate(forceUpdate + 1);
+        }
 
     const militaryToStandard = value =>{
         let hour = value.substring ( 0,2 ); 
